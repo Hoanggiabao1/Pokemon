@@ -1,3 +1,6 @@
+#include <windows.h>
+#include <string>
+#include <SDL_image.h>
 #include <SDL.h>
 
 int main(int argc, char* argv[]){
