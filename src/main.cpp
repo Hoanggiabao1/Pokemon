@@ -5,7 +5,6 @@
 
 SDL_Window* cuaSo = NULL;
 SDL_Surface* manHinh = NULL;
-SDL_Surface* banDo = NULL;
 
 const int chieuDai = 1920;
 const int chieuRong = 1080; //(chieu cao)
@@ -29,8 +28,6 @@ bool init()
 
 void ketThuc()
 {
-    SDL_FreeSurface( banDo );
-    banDo = NULL;
     SDL_DestroyWindow( cuaSo );
     cuaSo = NULL;
     SDL_Quit();
@@ -41,7 +38,7 @@ int main(int argc, char* argv[]){
     if (!init()){
         return 1;
     }
-
+    
     SDL_UpdateWindowSurface( cuaSo );
     SDL_Delay(3000);
     ketThuc();
