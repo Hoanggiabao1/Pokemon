@@ -37,7 +37,7 @@ int main(int argc, char* argv[]){
     
     renderer = SDL_CreateRenderer(cuaSo, -1, SDL_RENDERER_ACCELERATED);
     if (renderer == NULL) {
-        return false;
+        return 1;
     }
 
     SDL_Texture* mapDemo = textureAnh("res/Map/map2.jpg");
