@@ -4,8 +4,8 @@
 #include <SDL.h>
 #include "file_cpp/mapchinh.cpp"
 
-const int chieuDai = 1920;
-const int chieuRong = 1080; //(chieu cao)
+const int chieuDai = 1600;
+const int chieuRong = 800; //(chieu cao)
 
 bool init()
 {
@@ -13,8 +13,8 @@ bool init()
         return false;
     }
     else{
-        cuaSo = SDL_CreateWindow( "Pokemon", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, chieuDai, chieuRong, SDL_WINDOW_SHOWN );
-        if( cuaSo == NULL ){
+        window = SDL_CreateWindow( "Pokemon", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, chieuDai, chieuRong, SDL_WINDOW_SHOWN );
+        if( window == NULL ){
             return false;
         }
     }
@@ -24,8 +24,8 @@ bool init()
 void ketThuc()
 {   
     SDL_DestroyRenderer(renderer);
-    SDL_DestroyWindow( cuaSo );
-    cuaSo = NULL;
+    SDL_DestroyWindow( window );
+    window = NULL;
     SDL_Quit();
 }
 
@@ -35,30 +35,14 @@ int main(int argc, char* argv[]){
         return 1;
     }
     
-    renderer = SDL_CreateRenderer(cuaSo, -1, SDL_RENDERER_ACCELERATED);
+    renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
     if (renderer == NULL) {
         return 1;
     }
 
-    SDL_Texture* mapDemo = textureAnh("res/Map/map2.jpg");
-    if (mapDemo == NULL){
-        return 1;
-    }
-
-    SDL_Texture* nhanVat = textureAnh("res/Nhanvat/dilen/1.png");
-    if (nhanVat == NULL){
-        return 1;
-    }
-
-    inAnh(200, -7020, 960, 8000, mapDemo);
-
-    inAnh(400, 620, 40, 40, nhanVat);
-
-    SDL_RenderPresent(renderer);
-    SDL_UpdateWindowSurface( cuaSo );
-    SDL_Delay(3000);
-    SDL_DestroyTexture(mapDemo);
-    SDL_DestroyTexture(nhanVat);
+    vongLapGame();
+    
+    SDL_UpdateWindowSurface( window );
     ketThuc();
 
     return 0;
