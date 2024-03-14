@@ -53,6 +53,19 @@ void inCo(int hoanhDoX, int tungDoY, int chieuDai, int chieuCao, SDL_Texture* te
     }
 }
 
+void inNha(int hoanhDoX, int tungDoY, int chieuDai, int chieuCao, std::string tenFileAnh){
+    SDL_Texture* nha = inAnhLen(tenFileAnh.c_str());
+    inTextureLenManHinh(hoanhDoX, tungDoY, chieuDai, chieuCao, nha);
+    SDL_DestroyTexture(nha);
+}
+
+void inNhaVaoDuocLenManHinh(int x_bando, int y_bando){
+    inNha(x_bando + 80, y_bando + 7440, 220, 200, "res/Nha/nhaminh.png");
+    inNha(x_bando + 360, y_bando + 5760, 240, 160, "res/Nha/gym.png");
+    inNha(x_bando + 120, y_bando + 3680, 240, 160, "res/Nha/gym.png");
+    inNha(x_bando + 160, y_bando + 2400, 240, 160, "res/Nha/gym.png");
+}
+
 void inCayLenManHinh(int x_bando, int y_bando){
         SDL_Texture* cay = inAnhLen("res/Vatthe/cay.png");
         inCaylenNgang(x_bando, y_bando + 7900, 40, 60, cay);
@@ -66,6 +79,15 @@ void inCayLenManHinh(int x_bando, int y_bando){
         inCayNgangCong(x_bando, y_bando + 7020, 40, 60, cay);
         inCayLenDoc(x_bando, y_bando - 20, 40, 60, cay);
         inCayLenDoc(x_bando + 880, y_bando - 20, 40, 60, cay);
+        for (int i = 0; i <= 280; i+= 40){
+            if(i <= 200){
+                inTextureLenManHinh(x_bando + 400, y_bando + 7380 + i, 40, 60, cay);
+            }
+            if(i <= 120){
+                inTextureLenManHinh(x_bando + 280 + i, y_bando + 7580, 40, 60, cay);
+            }
+            inTextureLenManHinh(x_bando + 80 + i, y_bando + 7380, 40, 60, cay);
+        }
         SDL_DestroyTexture(cay);
 }
 
@@ -79,6 +101,7 @@ void inCoLenManHinh(int x_bando, int y_bando){
     inCo(x_bando + 560, y_bando + 1240, 280, 800, co);
     SDL_DestroyTexture(co);
 }
+
 bool vaChamVien(int x_bando, int y_bando){
     return (y_bando > -6720 && y_bando < -6600  && (x_bando > -40 || x_bando < -80))
         || (y_bando > -5680 && y_bando < -5560  && (x_bando > -40 || x_bando < -80))
@@ -87,21 +110,26 @@ bool vaChamVien(int x_bando, int y_bando){
         || (y_bando > -2880 && y_bando < -2760  && (x_bando > -40 || x_bando < -80))
         || (y_bando > -1760 && y_bando < -1640  && (x_bando > -40 || x_bando < -80))
         || (y_bando > -800 && y_bando < -680  && (x_bando > -40 || x_bando < -80))
-        ||y_bando < -7480 || y_bando > 320 || x_bando > 320 || x_bando < -440;
+        || (y_bando > -7240 && y_bando < -6960 && x_bando > -40 )
+        || (y_bando > -5520 && y_bando < -5320  && x_bando < 80 && x_bando > -200)
+        || (y_bando > -3440 && y_bando < -3240  && x_bando < 320 && x_bando > 40)
+        || (y_bando > -2160 && y_bando < -1960  && x_bando < 280 && x_bando > 0)
+        || y_bando < -7480 || y_bando > 320 || x_bando > 320 || x_bando < -440;
 
 }
 
 void inMapChinh(int x_bando, int y_bando, int i, int j){
     std::string hoatAnh[4][4] ={
-        {"res/Nhanvat/dilen/1.png", "res/Nhanvat/dilen/2.png", "res/Nhanvat/dilen/3.png", "res/Nhanvat/dilen/4.png"},
-        {"res/Nhanvat/dixuong/1.png", "res/Nhanvat/dixuong/2.png", "res/Nhanvat/dixuong/3.png", "res/Nhanvat/dixuong/4.png"},
-        {"res/Nhanvat/sangphai/1.png", "res/Nhanvat/sangphai/2.png", "res/Nhanvat/sangphai/3.png", "res/Nhanvat/sangphai/4.png"},
-        {"res/Nhanvat/sangtrai/1.png", "res/Nhanvat/sangtrai/2.png", "res/Nhanvat/sangtrai/3.png", "res/Nhanvat/sangtrai/4.png"}
+        {"res/Nhanvat/dilen/1.png",     "res/Nhanvat/dilen/2.png",      "res/Nhanvat/dilen/3.png",      "res/Nhanvat/dilen/4.png"},
+        {"res/Nhanvat/dixuong/1.png",   "res/Nhanvat/dixuong/2.png",    "res/Nhanvat/dixuong/3.png",    "res/Nhanvat/dixuong/4.png"},
+        {"res/Nhanvat/sangphai/1.png",  "res/Nhanvat/sangphai/2.png",   "res/Nhanvat/sangphai/3.png",   "res/Nhanvat/sangphai/4.png"},
+        {"res/Nhanvat/sangtrai/1.png",  "res/Nhanvat/sangtrai/2.png",   "res/Nhanvat/sangtrai/3.png",   "res/Nhanvat/sangtrai/4.png"}
     };
     SDL_Texture* banDo = inAnhLen("res/Map/map2.jpg");
     SDL_Texture* nhanVat = inAnhLen(hoatAnh[i][j]);
     inTextureLenManHinh(x_bando, y_bando, 960, 8000, banDo);
     inCoLenManHinh(x_bando, y_bando);
+    inNhaVaoDuocLenManHinh(x_bando, y_bando);
     inTextureLenManHinh(400, 400, 40, 40, nhanVat);
     inCayLenManHinh(x_bando, y_bando);
     SDL_DestroyTexture(banDo);
@@ -110,7 +138,7 @@ void inMapChinh(int x_bando, int y_bando, int i, int j){
 
 void vongLapGame(){
     int x_bando = 200;
-    int y_bando = -7220;
+    int y_bando = -7240;
     int i = 0;
     int j = 0;
     bool quit = false;

@@ -25,7 +25,6 @@ void ketThuc()
 {   
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow( window );
-    window = NULL;
     SDL_Quit();
 }
 
@@ -41,9 +40,8 @@ int main(int argc, char* argv[]){
     }
 
     vongLapGame();
-    
     SDL_UpdateWindowSurface( window );
+    
     ketThuc();
-
     return 0;
 }
