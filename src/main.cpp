@@ -9,13 +9,18 @@ const int chieuRong = 800; //(chieu cao)
 
 bool init()
 {
-    if( SDL_Init( SDL_INIT_VIDEO ) < 0 ){
+    if( SDL_Init( SDL_INIT_EVERYTHING ) < 0 ){
         return false;
     }
     else{
         window = SDL_CreateWindow( "Pokemon", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, chieuDai, chieuRong, SDL_WINDOW_SHOWN );
         if( window == NULL ){
             return false;
+        }
+
+        renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
+        if (renderer == NULL) {
+        return false;
         }
     }
     return true;
@@ -33,15 +38,8 @@ int main(int argc, char* argv[]){
     if (!init()){
         return 1;
     }
-    
-    renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
-    if (renderer == NULL) {
-        return 1;
-    }
-
     vongLapGame();
     SDL_UpdateWindowSurface( window );
-    
     ketThuc();
     return 0;
 }
