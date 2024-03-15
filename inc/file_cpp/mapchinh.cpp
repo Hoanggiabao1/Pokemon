@@ -59,6 +59,16 @@ void inNha(int hoanhDoX, int tungDoY, int chieuDai, int chieuCao, std::string te
     SDL_DestroyTexture(nha);
 }
 
+void inNPC(int hoanhDoX, int tungDoY, std::string tenFileAnh){
+    SDL_Texture* nhanVatPhu = inAnhLen(tenFileAnh.c_str());
+    inTextureLenManHinh(hoanhDoX, tungDoY, 40, 40, nhanVatPhu);
+    SDL_DestroyTexture(nhanVatPhu);
+}
+
+void inNPCLenManHinh(int x_bando, int y_bando){
+    inNPC(x_bando + 240, y_bando + 7600, "res/NPC/me.png");
+    inNPC(x_bando + 420, y_bando + 540, "res/NPC/trumcuoi.png");
+}
 void inNhaLenManHinh(int x_bando, int y_bando){
     inNha(x_bando + 80, y_bando + 7440, 220, 200, "res/Nha/nhaminh.png");
     inNha(x_bando + 360, y_bando + 5760, 240, 160, "res/Nha/gym.png");
@@ -113,6 +123,9 @@ void inCayLenManHinh(int x_bando, int y_bando){
             }
             inTextureLenManHinh(x_bando + 80 + i, y_bando + 7380, 40, 60, cay);
         }
+        inTextureLenManHinh(x_bando + 124, y_bando + 2640, 40, 60, cay);
+        inTextureLenManHinh(x_bando + 300, y_bando + 2660, 40, 60, cay);
+        inTextureLenManHinh(x_bando + 380, y_bando + 2800, 40, 60, cay);
         SDL_DestroyTexture(cay);
 }
 
@@ -126,6 +139,7 @@ void inCoLenManHinh(int x_bando, int y_bando){
     inCo(x_bando + 560, y_bando + 1240, 280, 800, co);
     inCo(x_bando + 160, y_bando + 5320, 660, 80, co);
     inCo(x_bando + 120, y_bando + 7760, 160, 120, co);
+    inCo(x_bando + 520, y_bando + 2680, 120, 200, co);
     SDL_DestroyTexture(co);
 }
 
@@ -138,9 +152,9 @@ bool vaChamVien(int x_bando, int y_bando){
         || (y_bando > -1760 && y_bando < -1640  && (x_bando > -40 || x_bando < -80))
         || (y_bando > -800 && y_bando < -680  && (x_bando > -40 || x_bando < -80))
         || (y_bando > -7240 && y_bando < -6960 && x_bando > -40 )
-        || (y_bando > -5520 && y_bando < -5320  && x_bando < 80 && x_bando > -200)
-        || (y_bando > -3440 && y_bando < -3240  && x_bando < 320 && x_bando > 40)
-        || (y_bando > -2160 && y_bando < -1960  && x_bando < 280 && x_bando > 0)
+        || (y_bando > -5520 && y_bando < -5320 && x_bando < 80 && x_bando > -200)
+        || (y_bando > -3440 && y_bando < -3240 && x_bando < 320 && x_bando > 40)
+        || (y_bando > -2160 && y_bando < -1960 && x_bando < 280 && x_bando > 0)
         || (y_bando > -7480 && y_bando < -7320 && x_bando < 0 && x_bando > -440)
         || (y_bando > -7200 && y_bando < -6960 && x_bando < -160 && x_bando > -400)
         || (y_bando > -6920 && y_bando < -6680 && x_bando < -280 && x_bando > -400)
@@ -150,6 +164,13 @@ bool vaChamVien(int x_bando, int y_bando){
         || (y_bando > -5320 && y_bando < -5080 && x_bando < -160 && x_bando > -360)
         || (y_bando > -5040 && y_bando < -4960 && x_bando < 280 && x_bando > -400)
         || (y_bando > -4920 && y_bando < -4840 && x_bando < 280 && x_bando > -400)
+        || (y_bando > -3440 && y_bando < -3300 && x_bando < -160 && x_bando > -400)
+        || (y_bando > -3520 && y_bando < -3280 && x_bando < -260 && x_bando > -400)
+        || (y_bando > -3240 && y_bando < -2960 && x_bando < 280 && x_bando > 40)
+        || (y_bando > -3120 && y_bando < -2880 && x_bando < -160 && x_bando > -400)
+        || (y_bando > -2520 && y_bando < -2200 && x_bando < 340 && x_bando > -280)
+        || (y_bando > -2560 && y_bando < -2520 && x_bando < 280 && x_bando > 40)
+        || (y_bando > -2080 && y_bando < -1800 && x_bando < -160 && x_bando > -400)
         || y_bando < -7480 || y_bando > 320 || x_bando > 320 || x_bando < -440;
 
 }
@@ -172,6 +193,7 @@ void inMapChinh(int x_bando, int y_bando, int i, int j){
     inCoLenManHinh(x_bando, y_bando);
     inNhaLenManHinh(x_bando, y_bando);
     inNhanVat(i, j);
+    inNPCLenManHinh(x_bando, y_bando);
     inCayLenManHinh(x_bando, y_bando);
     SDL_DestroyTexture(banDo);
 }

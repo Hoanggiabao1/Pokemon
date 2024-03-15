@@ -22,12 +22,15 @@ bool init()
         if (renderer == NULL) {
         return false;
         }
+
     }
+
     return true;
 }
 
 void ketThuc()
 {   
+    IMG_Quit();
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow( window );
     SDL_Quit();
@@ -38,6 +41,7 @@ int main(int argc, char* argv[]){
     if (!init()){
         return 1;
     }
+    
     vongLapGame();
     SDL_UpdateWindowSurface( window );
     ketThuc();
