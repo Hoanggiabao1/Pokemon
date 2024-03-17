@@ -1,22 +1,3 @@
-#include <SDL.h>
-#include <SDL_image.h>
-#include <string>
-
-
-SDL_Window* window = NULL;
-SDL_Renderer* renderer = NULL;
-
-SDL_Texture* inAnhLen(std::string tenfile){
-    SDL_Surface* surface = IMG_Load(tenfile.c_str());
-    SDL_Texture* texture = SDL_CreateTextureFromSurface(renderer, surface);
-    SDL_FreeSurface(surface);
-    return texture;
-}
-
-void inTextureLenManHinh(int hoanhDoX, int tungDoY, int chieuDai, int chieuCao, SDL_Texture* texture){
-    SDL_Rect destinationRect = {hoanhDoX, tungDoY, chieuDai, chieuCao};
-    SDL_RenderCopy(renderer, texture, NULL, &destinationRect);
-}
 
 void inCaylenNgang(int hoanhDoX, int tungDoY, int chieuDai, int chieuCao, SDL_Texture* texture){
     for (int i = 0; i <= 880; i+=80){
@@ -67,8 +48,9 @@ void inNPC(int hoanhDoX, int tungDoY, std::string tenFileAnh){
 
 void inNPCLenManHinh(int x_bando, int y_bando){
     inNPC(x_bando + 240, y_bando + 7600, "res/NPC/me.png");
-    inNPC(x_bando + 420, y_bando + 540, "res/NPC/trumcuoi.png");
+    inNPC(x_bando + 460, y_bando + 540, "res/NPC/trumcuoi.png");
 }
+
 void inNhaLenManHinh(int x_bando, int y_bando){
     inNha(x_bando + 80, y_bando + 7440, 220, 200, "res/Nha/nhaminh.png");
     inNha(x_bando + 360, y_bando + 5760, 240, 160, "res/Nha/gym.png");
@@ -171,93 +153,73 @@ bool vaChamVien(int x_bando, int y_bando){
         || (y_bando > -2520 && y_bando < -2200 && x_bando < 340 && x_bando > -280)
         || (y_bando > -2560 && y_bando < -2520 && x_bando < 280 && x_bando > 40)
         || (y_bando > -2080 && y_bando < -1800 && x_bando < -160 && x_bando > -400)
+        || (y_bando > -180 && y_bando < -100 && x_bando < -20 && x_bando > -100)
         || y_bando < -7480 || y_bando > 320 || x_bando > 320 || x_bando < -440;
 
 }
 
-void inNhanVat(int i, int j){
+void inNhanVat(int huongdi, int tuthe){
     std::string hoatAnh[4][4] ={
         {"res/Nhanvat/dilen/1.png",     "res/Nhanvat/dilen/2.png",      "res/Nhanvat/dilen/3.png",      "res/Nhanvat/dilen/4.png"},
         {"res/Nhanvat/dixuong/1.png",   "res/Nhanvat/dixuong/2.png",    "res/Nhanvat/dixuong/3.png",    "res/Nhanvat/dixuong/4.png"},
         {"res/Nhanvat/sangphai/1.png",  "res/Nhanvat/sangphai/2.png",   "res/Nhanvat/sangphai/3.png",   "res/Nhanvat/sangphai/4.png"},
         {"res/Nhanvat/sangtrai/1.png",  "res/Nhanvat/sangtrai/2.png",   "res/Nhanvat/sangtrai/3.png",   "res/Nhanvat/sangtrai/4.png"}
     };
-    SDL_Texture* nhanVat = inAnhLen(hoatAnh[i][j]);
+    SDL_Texture* nhanVat = inAnhLen(hoatAnh[huongdi][tuthe]);
     inTextureLenManHinh(400, 400, 40, 40, nhanVat);
     SDL_DestroyTexture(nhanVat);
 }
 
-void inMapChinh(int x_bando, int y_bando, int i, int j){
+void inMapChinh(int x_bando, int y_bando, int huongdi, int tuthe){
     SDL_Texture* banDo = inAnhLen("res/Map/map2.jpg");
     inTextureLenManHinh(x_bando, y_bando, 960, 8000, banDo);
     inCoLenManHinh(x_bando, y_bando);
     inNhaLenManHinh(x_bando, y_bando);
-    inNhanVat(i, j);
+    inNhanVat(huongdi, tuthe);
     inNPCLenManHinh(x_bando, y_bando);
     inCayLenManHinh(x_bando, y_bando);
     SDL_DestroyTexture(banDo);
 }
 
-void vongLapGame(){
-    int x_bando = 200;
-    int y_bando = -7240;
-    int i = 0;
-    int j = 0;
-    bool quit = false;
-    SDL_Event e;
-    while (!quit) {
-        SDL_RenderClear(renderer);
-        inMapChinh(x_bando, y_bando, i, j);
-        SDL_RenderPresent(renderer);
-        while (SDL_PollEvent(&e) != 0) {
-            if (e.type == SDL_QUIT) {
-                quit = true;
-            } else if (e.type == SDL_KEYDOWN) {
-                switch (e.key.keysym.sym) {
-                    case SDLK_ESCAPE:
-                        quit = true;
-                        break;
-                    case SDLK_a:
-                        i = 3;
-                        j += 1;
-                        if (j == 4){j = 0;}
-                        x_bando += 20;
-                        if(vaChamVien(x_bando, y_bando)){
-                            x_bando -=20;
-                        }
-                        break;
-                    case SDLK_s:
-                        i = 1;
-                        j += 1;
-                        if (j == 4){j = 0;}
-                        y_bando -= 20;
-                        if(vaChamVien(x_bando, y_bando) ){
-                            y_bando +=20;
-                        }
-                        break;
-                    case SDLK_d:
-                        i = 2;
-                        j += 1;
-                        if (j == 4){j = 0;}
-                        x_bando -= 20;
-                        if(vaChamVien(x_bando, y_bando)){
-                            x_bando += 20;
-                        }
-                        break;
-                    case SDLK_w:
-                        i = 0;
-                        j += 1;
-                        if (j == 4){j = 0;}
-                        y_bando += 20;
-                        if(vaChamVien(x_bando, y_bando)){
-                            y_bando -= 20;
-                        }
-                        break;
-                    default:
-                        break;
-                }
-        }
+void diChuyenTrenBanDo(SDL_Event e, int &x_bando, int &y_bando, int &huongdi, int &tuthe){
+    switch (e.key.keysym.sym) {
+        case SDLK_a:
+            huongdi = 3;
+            tuthe += 1;
+            if (tuthe == 4){tuthe = 0;}
+            x_bando += 20;
+            if(vaChamVien(x_bando, y_bando)){
+                x_bando -=20;
+            }
+            break;
+        case SDLK_s:
+            huongdi = 1;
+            tuthe += 1;
+            if (tuthe == 4){tuthe = 0;}
+            y_bando -= 20;
+            if(vaChamVien(x_bando, y_bando) ){
+                y_bando +=20;
+            }
+            break;
+        case SDLK_d:
+            huongdi = 2;
+            tuthe += 1;
+            if (tuthe == 4){tuthe = 0;}
+            x_bando -= 20;
+            if(vaChamVien(x_bando, y_bando)){
+                x_bando += 20;
+            }
+            break;
+        case SDLK_w:
+            huongdi = 0;
+            tuthe += 1;
+            if (tuthe == 4){tuthe = 0;}
+            y_bando += 20;
+            if(vaChamVien(x_bando, y_bando)){
+                y_bando -= 20;
+            }
+            break;
+        default:
+            break;
         }
     }
-    
-}
