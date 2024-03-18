@@ -6,6 +6,8 @@
 
 SDL_Window* window = NULL;
 SDL_Renderer* renderer = NULL;
+std::string pixel = "res/font/Pixeled.ttf";
+std::string arial = "res/font/arial.ttf";
 
 SDL_Texture* inAnhLen(std::string tenfile){
     SDL_Surface* surface = IMG_Load(tenfile.c_str());
@@ -14,8 +16,8 @@ SDL_Texture* inAnhLen(std::string tenfile){
     return texture;
 }
 
-SDL_Texture* dongChu(std::string noidung){
-    TTF_Font* font = TTF_OpenFont("res/font/arial.ttf", 40);
+SDL_Texture* dongChu(std::string noidung, int coChu, std::string fontChu){
+    TTF_Font* font = TTF_OpenFont(fontChu.c_str(), coChu);
     SDL_Color mauChu = {255, 255, 255}; //mau trang
     SDL_Surface* textSurface = TTF_RenderText_Solid(font, noidung.c_str(), mauChu);
     SDL_Texture* textTexture = SDL_CreateTextureFromSurface(renderer, textSurface);

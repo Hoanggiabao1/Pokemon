@@ -3,7 +3,7 @@
 void inTitle(){
     SDL_Texture* anhNen = inAnhLen("res/Map/title.jpg");
     inTextureLenManHinh(200, 0, 1200, 800, anhNen);
-    SDL_Texture* chuViet = dongChu("NHAN VAO DAY");
+    SDL_Texture* chuViet = dongChu("NHAN VAO DAY", 40, pixel);
     static int thoiGian = 0;
     thoiGian += 1;
     int tanso = 100;

@@ -223,3 +223,33 @@ void diChuyenTrenBanDo(SDL_Event e, int &x_bando, int &y_bando, int &huongdi, in
             break;
         }
     }
+
+void loiThoaiMe(int lan, int doiloithoai){
+    std::string loiThoai[3][100] = {
+        {   
+            "Hay bat dau cuoc hanh trinh bat Poke cua minh", 
+            "Di vao nhung bui co kia de bat Poke", 
+            "Day la 50 bong Poke khoi dau cua con",
+            "Ben phai la tui do se cho biet cac Poke va item so huu",
+            "Neu Pokemon con it HP hay quay ve day de hoi mau",
+            "Chuc may man!"
+        }, 
+        {   
+            "Doi 1 chut de hoi mau",
+            "Da hoi mau xong",
+        },
+        {
+            "Con da la nha Vo dich",
+            "Chuc mung",
+        }
+        };
+    SDL_Texture* loiNoi = dongChu(loiThoai[lan][doiloithoai], 24, arial);
+    SDL_Surface* hopThoai = SDL_CreateRGBSurface(0, 400, 300, 32, 0, 0, 0, 0);
+    SDL_FillRect(hopThoai, NULL, SDL_MapRGB(hopThoai->format, 0, 0, 225));
+    SDL_Texture* textureHopThoai = SDL_CreateTextureFromSurface(renderer, hopThoai);
+    SDL_FreeSurface(hopThoai);
+    inTextureLenManHinh(0, 600, 800, 100, textureHopThoai);
+    inTextureLenManHinh(100, 638, 500, 24, loiNoi);
+    SDL_DestroyTexture(loiNoi);
+    SDL_DestroyTexture(textureHopThoai);
+}
