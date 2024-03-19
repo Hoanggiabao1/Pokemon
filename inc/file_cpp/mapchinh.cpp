@@ -183,7 +183,7 @@ bool trenCo(int x_bando, int y_bando){
 }
 
 int buocdi = 0;
-void diChuyenTrenBanDo(SDL_Event e, int &x_bando, int &y_bando, int &huongdi, int &tuthe, bool &battle){
+void diChuyenTrenBanDo(SDL_Event e, int &x_bando, int &y_bando, int &huongdi, int &tuthe, bool &battle, bool &dichuyen, int &random){
     switch (e.key.keysym.sym) {
         case SDLK_a:
             huongdi = 3;
@@ -240,6 +240,8 @@ void diChuyenTrenBanDo(SDL_Event e, int &x_bando, int &y_bando, int &huongdi, in
         int tile = rand()%100 + 1;
         if (tile > 50){
             battle = true;
+            dichuyen = false;
+            random = rand()%3;
         }
         buocdi = 0;
     }
