@@ -4,7 +4,7 @@
 #include <SDL.h>
 #include "file_cpp/vonglapgame.cpp"
 
-const int chieuDai = 1600;
+const int chieuDai = 1280;
 const int chieuRong = 800; //(chieu cao)
 
 bool init()

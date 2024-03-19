@@ -29,3 +29,21 @@ void inTextureLenManHinh(int hoanhDoX, int tungDoY, int chieuDai, int chieuCao, 
     SDL_Rect destinationRect = {hoanhDoX, tungDoY, chieuDai, chieuCao};
     SDL_RenderCopy(renderer, texture, NULL, &destinationRect);
 }
+
+void inHopThoai(std::string loiThoai){
+    SDL_Texture* loiNoi = dongChu(loiThoai, 24, arial);
+    SDL_Surface* hopThoai = SDL_CreateRGBSurface(0, 400, 300, 32, 0, 0, 0, 0);
+    SDL_Surface* hopThoaiLon = SDL_CreateRGBSurface(0, 400, 300, 32, 0, 0, 0, 0);
+    SDL_FillRect(hopThoai, NULL, SDL_MapRGB(hopThoai->format, 0, 102, 51));
+    SDL_FillRect(hopThoaiLon, NULL, SDL_MapRGB(hopThoai->format, 204, 0, 0));
+    SDL_Texture* textureHopThoai = SDL_CreateTextureFromSurface(renderer, hopThoai);
+    SDL_Texture* textureHopThoaiLon = SDL_CreateTextureFromSurface(renderer, hopThoaiLon);
+    SDL_FreeSurface(hopThoai);
+    SDL_FreeSurface(hopThoaiLon);
+    inTextureLenManHinh(90, 590, 820, 120, textureHopThoaiLon);
+    inTextureLenManHinh(100, 600, 800, 100, textureHopThoai);
+    inTextureLenManHinh(150, 638, 500, 24, loiNoi);
+    SDL_DestroyTexture(loiNoi);
+    SDL_DestroyTexture(textureHopThoai);
+    SDL_DestroyTexture(textureHopThoaiLon);
+}

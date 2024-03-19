@@ -170,18 +170,20 @@ void inNhanVat(int huongdi, int tuthe){
     SDL_DestroyTexture(nhanVat);
 }
 
-void inMapChinh(int x_bando, int y_bando, int huongdi, int tuthe){
-    SDL_Texture* banDo = inAnhLen("res/Map/map2.jpg");
-    inTextureLenManHinh(x_bando, y_bando, 960, 8000, banDo);
-    inCoLenManHinh(x_bando, y_bando);
-    inNhaLenManHinh(x_bando, y_bando);
-    inNhanVat(huongdi, tuthe);
-    inNPCLenManHinh(x_bando, y_bando);
-    inCayLenManHinh(x_bando, y_bando);
-    SDL_DestroyTexture(banDo);
+bool trenCo(int x_bando, int y_bando){
+    return (y_bando > -6600 && y_bando < -5680 && x_bando > 0 && x_bando < 320)
+        || (y_bando > -7480 && y_bando < -7320 && x_bando > 120 && x_bando < 320)
+        || (y_bando > -6600 && y_bando < -5680 && x_bando > -440 && x_bando < -120)
+        || (y_bando > -5000 && y_bando < -4880 && x_bando > -400 && x_bando < 280)
+        || (y_bando > -4680 && y_bando < -3760 && x_bando > 0 && x_bando < 320)
+        || (y_bando > -4680 && y_bando < -3760 && x_bando > -440 && x_bando < -120)
+        || (y_bando > -1640 && y_bando < -800 && x_bando > 0 && x_bando < 320)
+        || (y_bando > -1640 && y_bando < -800 && x_bando > -440 && x_bando < -120);
+        
 }
 
-void diChuyenTrenBanDo(SDL_Event e, int &x_bando, int &y_bando, int &huongdi, int &tuthe){
+int buocdi = 0;
+void diChuyenTrenBanDo(SDL_Event e, int &x_bando, int &y_bando, int &huongdi, int &tuthe, bool &battle){
     switch (e.key.keysym.sym) {
         case SDLK_a:
             huongdi = 3;
@@ -191,14 +193,20 @@ void diChuyenTrenBanDo(SDL_Event e, int &x_bando, int &y_bando, int &huongdi, in
             if(vaChamVien(x_bando, y_bando)){
                 x_bando -=20;
             }
+            if (trenCo(x_bando, y_bando)){
+                buocdi +=1;
+            }
             break;
         case SDLK_s:
             huongdi = 1;
             tuthe += 1;
             if (tuthe == 4){tuthe = 0;}
             y_bando -= 20;
-            if(vaChamVien(x_bando, y_bando) ){
+            if(vaChamVien(x_bando, y_bando)){
                 y_bando +=20;
+            }
+            if (trenCo(x_bando, y_bando)){
+                buocdi +=1;
             }
             break;
         case SDLK_d:
@@ -209,6 +217,9 @@ void diChuyenTrenBanDo(SDL_Event e, int &x_bando, int &y_bando, int &huongdi, in
             if(vaChamVien(x_bando, y_bando)){
                 x_bando += 20;
             }
+            if (trenCo(x_bando, y_bando)){
+                buocdi +=1;
+            }
             break;
         case SDLK_w:
             huongdi = 0;
@@ -218,11 +229,21 @@ void diChuyenTrenBanDo(SDL_Event e, int &x_bando, int &y_bando, int &huongdi, in
             if(vaChamVien(x_bando, y_bando)){
                 y_bando -= 20;
             }
+            if (trenCo(x_bando, y_bando)){
+                buocdi +=1;
+            }
             break;
         default:
             break;
         }
+    if (buocdi == 3){
+        int tile = rand()%100 + 1;
+        if (tile > 50){
+            battle = true;
+        }
+        buocdi = 0;
     }
+}
 
 void loiThoaiMe(int lan, int doiloithoai){
     std::string loiThoai[3][100] = {
@@ -243,13 +264,84 @@ void loiThoaiMe(int lan, int doiloithoai){
             "Chuc mung",
         }
         };
-    SDL_Texture* loiNoi = dongChu(loiThoai[lan][doiloithoai], 24, arial);
-    SDL_Surface* hopThoai = SDL_CreateRGBSurface(0, 400, 300, 32, 0, 0, 0, 0);
-    SDL_FillRect(hopThoai, NULL, SDL_MapRGB(hopThoai->format, 0, 0, 225));
-    SDL_Texture* textureHopThoai = SDL_CreateTextureFromSurface(renderer, hopThoai);
-    SDL_FreeSurface(hopThoai);
-    inTextureLenManHinh(0, 600, 800, 100, textureHopThoai);
-    inTextureLenManHinh(100, 638, 500, 24, loiNoi);
-    SDL_DestroyTexture(loiNoi);
-    SDL_DestroyTexture(textureHopThoai);
+   inHopThoai(loiThoai[lan][doiloithoai]);
+}
+
+void loiThoaiBoss(int voDich, int doiloithoai){
+    std::string loiThoai[2][100] = {
+        {
+            "Nguoi da vuot ngan chong gai de den day",
+            "Hay quyet dau de tim ra nha vo dich"
+        },
+        {
+            "Nguoi da thang roi!",
+            "Hay day nhoc, ta rat kham phuc",
+            "Tu gio danh hieu nha vo dich la cua nguoi"
+        }
+    };
+    inHopThoai(loiThoai[voDich][doiloithoai]);
+}
+
+void kichhoat(bool &me, bool &boss, bool &dichuyen, int x_bando, int y_bando){
+    if (x_bando == 160 && y_bando == -7240){
+        me = true;
+        dichuyen = false;
+    }
+    if (x_bando == -60 && y_bando == -180){
+        boss = true;
+        dichuyen = false;
+    }
+}
+
+void xuLiLoiThoai(bool &me, bool &boss, bool &dichuyen, int &lan, int voDich, int &doiloithoai){
+    if (me){
+        dichuyen = false;
+        doiloithoai += 1;
+        if (doiloithoai == 6 && lan == 0){
+            lan += 1;
+            doiloithoai = 0;
+            me = false;
+            dichuyen = true;
+        }
+        if (doiloithoai == 1 && lan == 1){
+            SDL_Delay(3000);
+        }
+        if (doiloithoai == 2 && lan == 1){
+            doiloithoai = 0;
+            me = false;
+            dichuyen = true;
+        }
+    }
+
+    if (boss){
+        dichuyen = false;
+        doiloithoai += 1;
+        if (doiloithoai == 2 && voDich == 0){
+            doiloithoai = 0;
+            boss = false;
+            dichuyen = true;
+        }
+        if (doiloithoai == 3 && voDich == 1){
+            doiloithoai = 0;
+            boss = false;
+            dichuyen = true;
+        }
+    }
+}
+
+void inMapChinh(int x_bando, int y_bando, int huongdi, int tuthe, bool me, bool boss, int lan, int voDich, int doiloithoai){
+    SDL_Texture* banDo = inAnhLen("res/Map/map2.jpg");
+    inTextureLenManHinh(x_bando, y_bando, 960, 8000, banDo);
+    inCoLenManHinh(x_bando, y_bando);
+    inNhaLenManHinh(x_bando, y_bando);
+    inNhanVat(huongdi, tuthe);
+    inNPCLenManHinh(x_bando, y_bando);
+    inCayLenManHinh(x_bando, y_bando);
+    SDL_DestroyTexture(banDo);
+    if(me){
+        loiThoaiMe(lan, doiloithoai);
+    }
+    if (boss){
+        loiThoaiBoss(voDich, doiloithoai);
+    }
 }

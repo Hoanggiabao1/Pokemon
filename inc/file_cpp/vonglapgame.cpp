@@ -33,47 +33,29 @@ void vongLapGame(){
     bool me = false;
     int lan = 0;
     int doiloithoai = 0;
+    int voDich = 0;
+    bool boss = false;
+    bool battle = false;
     while (!quit) {
         SDL_RenderClear(renderer);
-        inMapChinh(x_bando, y_bando, huongdi, tuthe);
-        if(me){
-            loiThoaiMe(lan, doiloithoai);
-        }
+        if(!battle){
+            inMapChinh(x_bando, y_bando, huongdi, tuthe, me, boss, lan, voDich, doiloithoai);
+            }
         SDL_RenderPresent(renderer);
-        dichuyen = !me;
         while (SDL_PollEvent(&e) != 0) {
             if (e.type == SDL_QUIT) {
                 quit = true;
             } else if (e.type == SDL_KEYDOWN) {
                 if (dichuyen){
-                    diChuyenTrenBanDo(e, x_bando, y_bando, huongdi, tuthe);
+                    diChuyenTrenBanDo(e, x_bando, y_bando, huongdi, tuthe, battle);
                 }
-                if (e.key.keysym.sym == SDLK_j /*&& x_bando == 160 && y_bando == -7240*/){
-                    me = true;
+                if (e.key.keysym.sym == SDLK_j){
+                    kichhoat(me, boss, dichuyen, x_bando, y_bando);
                 }
             }
-            if (me){
-                if (e.type == SDL_MOUSEBUTTONDOWN){
-                    doiloithoai += 1;
-                    if (doiloithoai == 6 && lan == 0){
-                        lan += 1;
-                        doiloithoai = 0;
-                        me = false;
-                        dichuyen = true;
-                    }
-                    if (doiloithoai == 1 && lan == 1){
-                        SDL_Delay(3000);
-                    }
-                    if (doiloithoai == 2 && lan == 1){
-                        doiloithoai = 0;
-                        me = false;
-                        dichuyen = true;
-                    }
-
-                }
+            if (e.type == SDL_MOUSEBUTTONDOWN){
+                xuLiLoiThoai(me, boss, dichuyen, lan, voDich, doiloithoai);
             }
         }
     }
-    std::cout<<x_bando<<" "<<y_bando<<" ";
-    std::cout<<doiloithoai;
 }
