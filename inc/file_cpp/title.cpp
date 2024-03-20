@@ -1,4 +1,6 @@
 
+int tic = 0;
+bool title = true;
 
 void inTitle(){
     SDL_Texture* anhNen = inAnhLen("res/Map/title.jpg");

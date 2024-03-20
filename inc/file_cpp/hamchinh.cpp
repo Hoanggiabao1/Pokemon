@@ -1,6 +1,7 @@
 #include <SDL.h>
 #include <SDL_image.h>
 #include <SDL_ttf.h>
+#include <SDL_timer.h>
 #include <string>
 #include <iostream>
 
@@ -46,4 +47,10 @@ void inHopThoai(std::string loiThoai){
     SDL_DestroyTexture(loiNoi);
     SDL_DestroyTexture(textureHopThoai);
     SDL_DestroyTexture(textureHopThoaiLon);
+}
+
+void inVat(int hoanhDoX, int tungDoY, int chieuDai, int chieuCao, std::string tenFileAnh){
+    SDL_Texture* nha = inAnhLen(tenFileAnh.c_str());
+    inTextureLenManHinh(hoanhDoX, tungDoY, chieuDai, chieuCao, nha);
+    SDL_DestroyTexture(nha);
 }

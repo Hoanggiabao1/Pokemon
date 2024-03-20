@@ -1,3 +1,13 @@
+int x_bando = 200;
+int y_bando = -7240;
+int huongdi = 0;
+int tuthe = 0;
+bool dichuyen = true;
+bool me = false;
+int lan = 0;
+int doiloithoai = 0;
+int voDich = 0;
+bool boss = false;
 
 void inCaylenNgang(int hoanhDoX, int tungDoY, int chieuDai, int chieuCao, SDL_Texture* texture){
     for (int i = 0; i <= 880; i+=80){
@@ -34,12 +44,6 @@ void inCo(int hoanhDoX, int tungDoY, int chieuDai, int chieuCao, SDL_Texture* te
     }
 }
 
-void inNha(int hoanhDoX, int tungDoY, int chieuDai, int chieuCao, std::string tenFileAnh){
-    SDL_Texture* nha = inAnhLen(tenFileAnh.c_str());
-    inTextureLenManHinh(hoanhDoX, tungDoY, chieuDai, chieuCao, nha);
-    SDL_DestroyTexture(nha);
-}
-
 void inNPC(int hoanhDoX, int tungDoY, std::string tenFileAnh){
     SDL_Texture* nhanVatPhu = inAnhLen(tenFileAnh.c_str());
     inTextureLenManHinh(hoanhDoX, tungDoY, 40, 40, nhanVatPhu);
@@ -51,35 +55,35 @@ void inNPCLenManHinh(int x_bando, int y_bando){
     inNPC(x_bando + 460, y_bando + 540, "res/NPC/trumcuoi.png");
 }
 
-void inNhaLenManHinh(int x_bando, int y_bando){
-    inNha(x_bando + 80, y_bando + 7440, 220, 200, "res/Nha/nhaminh.png");
-    inNha(x_bando + 360, y_bando + 5760, 240, 160, "res/Nha/gym.png");
-    inNha(x_bando + 120, y_bando + 3680, 240, 160, "res/Nha/gym.png");
-    inNha(x_bando + 160, y_bando + 2400, 240, 160, "res/Nha/gym.png");
-    inNha(x_bando + 600, y_bando + 7400, 200, 200, "res/Nha/nhaNPC2.png");
-    inNha(x_bando + 600, y_bando + 7120, 200, 240, "res/Nha/nhaNPC1.png");
-    inNha(x_bando + 160, y_bando + 5480, 200, 240, "res/Nha/nhaNPC5.png");
-    inNha(x_bando + 600, y_bando + 5520, 160, 200, "res/Nha/nhaNPC2.png");
-    inNha(x_bando + 400, y_bando + 5560, 160, 160, "res/Vatthe/nui1.png");
-    inNha(x_bando + 600, y_bando + 3720, 200, 240, "res/Nha/nhaNPC1.png");
-    inNha(x_bando + 600, y_bando + 3320, 200, 200, "res/Nha/nhaNPC4.png");
-    inNha(x_bando + 160, y_bando + 3400, 200, 240, "res/Nha/nhaNPC6.png");
+void inVatLenManHinh(int x_bando, int y_bando){
+    inVat(x_bando + 80, y_bando + 7440, 220, 200, "res/Nha/nhaminh.png");
+    inVat(x_bando + 360, y_bando + 5760, 240, 160, "res/Nha/gym.png");
+    inVat(x_bando + 120, y_bando + 3680, 240, 160, "res/Nha/gym.png");
+    inVat(x_bando + 160, y_bando + 2400, 240, 160, "res/Nha/gym.png");
+    inVat(x_bando + 600, y_bando + 7400, 200, 200, "res/Nha/nhaNPC2.png");
+    inVat(x_bando + 600, y_bando + 7120, 200, 240, "res/Nha/nhaNPC1.png");
+    inVat(x_bando + 160, y_bando + 5480, 200, 240, "res/Nha/nhaNPC5.png");
+    inVat(x_bando + 600, y_bando + 5520, 160, 200, "res/Nha/nhaNPC2.png");
+    inVat(x_bando + 400, y_bando + 5560, 160, 160, "res/Vatthe/nui1.png");
+    inVat(x_bando + 600, y_bando + 3720, 200, 240, "res/Nha/nhaNPC1.png");
+    inVat(x_bando + 600, y_bando + 3320, 200, 200, "res/Nha/nhaNPC4.png");
+    inVat(x_bando + 160, y_bando + 3400, 200, 240, "res/Nha/nhaNPC6.png");
     for (int i = 0; i <= 600; i += 40){
-        inNha(x_bando + 160 + i, y_bando + 5400, 40, 40, "res/Vatthe/hangraodoc.png");
-        inNha(x_bando + 160 + i, y_bando + 5280, 40, 40, "res/Vatthe/hangraodoc.png");
+        inVat(x_bando + 160 + i, y_bando + 5400, 40, 40, "res/Vatthe/hangraodoc.png");
+        inVat(x_bando + 160 + i, y_bando + 5280, 40, 40, "res/Vatthe/hangraodoc.png");
     }
     for (int i = 0; i <= 580; i += 40){
-        inNha(x_bando + 80 + i, y_bando + 2640, 40, 40, "res/Vatthe/hangraodoc.png");
+        inVat(x_bando + 80 + i, y_bando + 2640, 40, 40, "res/Vatthe/hangraodoc.png");
     }
     for (int i = 40; i <= 240; i += 40){
-        inNha(x_bando + 80, y_bando + 2620 + i, 10, 60, "res/Vatthe/hangraongang.png");
-        inNha(x_bando + 670, y_bando + 2620 + i, 10, 60, "res/Vatthe/hangraongang.png");
+        inVat(x_bando + 80, y_bando + 2620 + i, 10, 60, "res/Vatthe/hangraongang.png");
+        inVat(x_bando + 670, y_bando + 2620 + i, 10, 60, "res/Vatthe/hangraongang.png");
     }
     for (int i = 0; i <= 580; i += 40){
-        inNha(x_bando + 80 + i, y_bando + 2880, 40, 40, "res/Vatthe/hangraodoc.png");
+        inVat(x_bando + 80 + i, y_bando + 2880, 40, 40, "res/Vatthe/hangraodoc.png");
     }
-    inNha(x_bando + 160, y_bando + 2760, 200, 200, "res/Nha/nhaNPC3.png");
-    inNha(x_bando + 600, y_bando + 2240, 200, 240, "res/Nha/nhaNPC2.png");
+    inVat(x_bando + 160, y_bando + 2760, 200, 200, "res/Nha/nhaNPC3.png");
+    inVat(x_bando + 600, y_bando + 2240, 200, 240, "res/Nha/nhaNPC2.png");
 
 }
 
@@ -158,7 +162,7 @@ bool vaChamVien(int x_bando, int y_bando){
 
 }
 
-void inNhanVat(int huongdi, int tuthe){
+void inVatnVat(int huongdi, int tuthe){
     std::string hoatAnh[4][4] ={
         {"res/Nhanvat/dilen/1.png",     "res/Nhanvat/dilen/2.png",      "res/Nhanvat/dilen/3.png",      "res/Nhanvat/dilen/4.png"},
         {"res/Nhanvat/dixuong/1.png",   "res/Nhanvat/dixuong/2.png",    "res/Nhanvat/dixuong/3.png",    "res/Nhanvat/dixuong/4.png"},
@@ -335,8 +339,8 @@ void inMapChinh(int x_bando, int y_bando, int huongdi, int tuthe, bool me, bool 
     SDL_Texture* banDo = inAnhLen("res/Map/map2.jpg");
     inTextureLenManHinh(x_bando, y_bando, 960, 8000, banDo);
     inCoLenManHinh(x_bando, y_bando);
-    inNhaLenManHinh(x_bando, y_bando);
-    inNhanVat(huongdi, tuthe);
+    inVatLenManHinh(x_bando, y_bando);
+    inVatnVat(huongdi, tuthe);
     inNPCLenManHinh(x_bando, y_bando);
     inCayLenManHinh(x_bando, y_bando);
     SDL_DestroyTexture(banDo);

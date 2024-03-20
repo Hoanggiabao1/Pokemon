@@ -4,10 +4,9 @@
 #include "file_cpp/battle.cpp"
 
 void vongLapGame(){
+    khoiTaoPokedex();
     SDL_Event e;
-    bool title = true;
     bool quit = false;
-    int tic = 0;
     while (title){
         SDL_RenderClear(renderer);
         inTitle();
@@ -23,21 +22,10 @@ void vongLapGame(){
                 title = false;
             } else if (e.type == SDL_MOUSEBUTTONDOWN) {
                 title = false;
+                tic = 0;
             }
         }
     }
-    int x_bando = 200;
-    int y_bando = -7240;
-    int huongdi = 0;
-    int tuthe = 0;
-    bool dichuyen = true;
-    bool me = false;
-    int lan = 0;
-    int doiloithoai = 0;
-    int voDich = 0;
-    bool boss = false;
-    bool battle = false;
-    int randomPoke = 0;
     while (!quit) {
         SDL_RenderClear(renderer);
         if(!battle){
@@ -45,7 +33,7 @@ void vongLapGame(){
             }
         if (battle){
             SDL_Delay(1000);
-            inBattlePoke(randomPoke);
+            inBattlePoke(randomPoke, nemBong, x_bong, y_bong, bongDenPoke, battle, inPoke, tic);
         }
         SDL_RenderPresent(renderer);
         while (SDL_PollEvent(&e) != 0) {
@@ -55,7 +43,7 @@ void vongLapGame(){
                 if (dichuyen){
                     diChuyenTrenBanDo(e, x_bando, y_bando, huongdi, tuthe, battle, dichuyen, randomPoke);
                 }
-                if (e.key.keysym.sym == SDLK_j){
+                if (e.key.keysym.sym == SDLK_e){
                     kichhoat(me, boss, dichuyen, x_bando, y_bando);
                 }
             }
@@ -63,11 +51,7 @@ void vongLapGame(){
                 int x_chuot, y_chuot;
                 SDL_GetMouseState(&x_chuot, &y_chuot);
                 xuLiLoiThoai(me, boss, dichuyen, lan, voDich, doiloithoai);
-                if(battle){
-                    std::cout<<x_chuot<<" " <<y_chuot;
-                    battle = false;
-                    dichuyen = true;
-                }
+                xuLiBatPoke (battle, nemBong, x_chuot, y_chuot, dichuyen, tiLeBat);
             }
         }
     }
