@@ -1,13 +1,3 @@
-int x_bando = 200;
-int y_bando = -7240;
-int huongdi = 0;
-int tuthe = 0;
-bool dichuyen = true;
-bool me = false;
-int lan = 0;
-int doiloithoai = 0;
-int voDich = 0;
-bool boss = false;
 
 void inCaylenNgang(int hoanhDoX, int tungDoY, int chieuDai, int chieuCao, SDL_Texture* texture){
     for (int i = 0; i <= 880; i+=80){
@@ -32,7 +22,7 @@ void inCayNgangCong (int hoanhDoX, int tungDoY, int chieuDai, int chieuCao, SDL_
         if (i <= 400 || i >= 520){
             inTextureLenManHinh(hoanhDoX + i, tungDoY, chieuDai, chieuCao, texture);
             inTextureLenManHinh(hoanhDoX + i, tungDoY + 40, chieuDai, chieuCao, texture);
-            }
+        }
     }
 }
 
@@ -346,14 +336,12 @@ void xuLiLoiThoai(bool &me, bool &boss, bool &dichuyen, int &lan, int voDich, in
 }
 
 void inMapChinh(int x_bando, int y_bando, int huongdi, int tuthe, bool me, bool boss, int lan, int voDich, int doiloithoai){
-    SDL_Texture* banDo = inAnhLen("res/Map/map2.jpg");
     inTextureLenManHinh(x_bando, y_bando, 960, 8000, banDo);
     inCoLenManHinh(x_bando, y_bando);
     inVatLenManHinh(x_bando, y_bando);
     inVatnVat(huongdi, tuthe);
     inNPCLenManHinh(x_bando, y_bando);
     inCayLenManHinh(x_bando, y_bando);
-    SDL_DestroyTexture(banDo);
     if(me){
         loiThoaiMe(lan, doiloithoai);
     }

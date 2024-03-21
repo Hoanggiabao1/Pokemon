@@ -23,6 +23,7 @@ SDL_Texture* dongChu(std::string noidung, int coChu, std::string fontChu){
     SDL_Surface* textSurface = TTF_RenderText_Solid(font, noidung.c_str(), mauChu);
     SDL_Texture* textTexture = SDL_CreateTextureFromSurface(renderer, textSurface);
     SDL_FreeSurface(textSurface);
+    TTF_CloseFont(font);
     return textTexture;
 }
 

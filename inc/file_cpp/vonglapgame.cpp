@@ -1,4 +1,5 @@
 #include "file_cpp/hamchinh.cpp"
+#include "file_cpp/khoitao.cpp"
 #include "file_cpp/mapchinh.cpp"
 #include "file_cpp/title.cpp"
 #include "file_cpp/battle.cpp"
@@ -6,6 +7,7 @@
 
 void vongLapGame(){
     khoiTaoPokedex();
+    khoiTaoGame();
     SDL_Event e;
     bool quit = false;
     while (title){
@@ -57,4 +59,5 @@ void vongLapGame(){
             }
         }
     }
+    ketThucGame();
 }

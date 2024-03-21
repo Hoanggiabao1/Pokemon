@@ -1,14 +1,5 @@
 #include "file_cpp/struct.cpp"
 
-bool battle = false;
-int randomPoke = 0;
-bool nemBong = false;
-int x_bong = 400;
-int y_bong = 400;
-bool bongDenPoke = false;
-bool inPoke = true;
-int tiLeBat;
-
 void xuLiBatPoke(bool &battle, bool &nemBong, int x_chuot, int y_chuot, bool &dichuyen, int &tiLeBat){
     if(battle){
         if (x_chuot >= 200 && x_chuot <= 600 && y_chuot >= 660 && y_chuot <= 740 && !nemBong){
@@ -35,6 +26,9 @@ void inLuaChon(){
         inTextureLenManHinh(680, 660, 400, 80, hopLuaChon);
         inTextureLenManHinh(720, 680, 300, 40, luaChon2);
     }
+    SDL_DestroyTexture(luaChon1);
+    SDL_DestroyTexture(luaChon2);
+    SDL_DestroyTexture(hopLuaChon);
 }
 
 void inBongPoke(int &x_bong, int &y_bong, bool &bongDenPoke, bool &inPoke){
@@ -61,10 +55,10 @@ void batPokeDcKo(int &x_bong, int &y_bong, bool &bongDenPoke, bool &nemBong, boo
         if (tiLeBat > 50){
             if (tic >= 3){
                 inPoke = true;
-                nemBong = false;
             }
             if (tic >= 5){
                 tic = 0;
+                nemBong = false;
                 inTextureLenManHinh(700, 190, 320, 40, thatBai);
                 bongDenPoke = false;
                 x_bong = 400;
