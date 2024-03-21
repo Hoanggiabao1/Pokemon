@@ -245,7 +245,17 @@ void diChuyenTrenBanDo(SDL_Event e, int &x_bando, int &y_bando, int &huongdi, in
         if (tile > 50){
             battle = true;
             dichuyen = false;
-            random = rand()%3;
+            if (y_bando > -1680){
+                random = rand()%15;
+            } else if (y_bando > -4720){
+                random = rand()%12;
+            } else if (y_bando > -5580){
+                random = rand()%9;
+            } else if (y_bando > -6640){
+                random = rand()%6;
+            } else {
+                random = rand()%3;
+            }
         }
         buocdi = 0;
     }

@@ -2,6 +2,7 @@
 #include "file_cpp/mapchinh.cpp"
 #include "file_cpp/title.cpp"
 #include "file_cpp/battle.cpp"
+#include "file_cpp/tuido.cpp"
 
 void vongLapGame(){
     khoiTaoPokedex();
@@ -30,6 +31,7 @@ void vongLapGame(){
         SDL_RenderClear(renderer);
         if(!battle){
             inMapChinh(x_bando, y_bando, huongdi, tuthe, me, boss, lan, voDich, doiloithoai);
+            inTuiDo();
             }
         if (battle){
             SDL_Delay(1000);
