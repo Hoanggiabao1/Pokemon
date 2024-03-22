@@ -7,7 +7,14 @@ void xuLiBatPoke(bool &battle, bool &nemBong, int x_chuot, int y_chuot, bool &di
             dichuyen = true;
         }
         if (x_chuot >= 680 && x_chuot <= 1080 && y_chuot >= 660 && y_chuot <= 740 && !nemBong){
-            nemBong = true;
+            if (bongPoke > 0){
+                nemBong = true;
+                bongPoke -= 1;
+                } else{
+                    battle = false;
+                    dichuyen = true;
+                }
+            
             tiLeBat = rand()%100;
         }
 }
@@ -73,7 +80,21 @@ void batPokeDcKo(int &x_bong, int &y_bong, bool &bongDenPoke, bool &nemBong, boo
                 bongDenPoke = false;
                 nemBong = false;
                 battle = false;
-                pokedex.cohaykhong = true;
+                if (!pokedex.cohaykhong){
+                    pokedex.cohaykhong = true;
+                } else{
+                    switch (pokedex.he){
+                    case 1:
+                        keoCo += 1;
+                        break;
+                    case 2:
+                        keoLua += 1;
+                        break;
+                    case 3:
+                        keoNuoc += 1;
+                        break;
+                    }
+                }
                 x_bong = 400;
                 y_bong = 400;
                 dichuyen = true;
@@ -96,5 +117,9 @@ void inBattlePoke(int random, bool &nemBong, int &x_bong, int &y_bong, bool &bon
     }else {
         inLuaChon();
     }
+    inVat(600, 620, 40, 40, "res/Vatpham/bong.png");
+    SDL_Texture* soLuong = dongChu("X " + std::to_string(bongPoke), 33, arial);
+    inTextureLenManHinh(640, 620, 40, 40, soLuong);
+    SDL_DestroyTexture(soLuong);
     inVat(150, 250, 450, 450, "res/Nhanvat/trongbattle.png");
 }

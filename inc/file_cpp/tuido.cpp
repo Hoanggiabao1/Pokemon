@@ -6,12 +6,12 @@ void inNenTuiDo(){
     SDL_FillRect(nenLon, NULL, SDL_MapRGB(nenLon->format, 204, 0, 0));
     SDL_Texture* textureNenNho = SDL_CreateTextureFromSurface(renderer, nenNho);
     SDL_Texture* textureNenLon = SDL_CreateTextureFromSurface(renderer, nenLon);
-    SDL_Texture* tieude = dongChu("TUI DO", 60, pixel);
+    SDL_Texture* tieude = dongChu("TUI DO", 40, pixel);
     SDL_FreeSurface(nenNho);
     SDL_FreeSurface(nenLon);
     inTextureLenManHinh(800, 0, 480, 800, textureNenLon);
     inTextureLenManHinh(810, 10, 460, 780, textureNenNho);
-    inTextureLenManHinh(875, 20, 330, 60, tieude);
+    inTextureLenManHinh(940, 20, 220, 40, tieude);
     SDL_DestroyTexture(textureNenNho);
     SDL_DestroyTexture(textureNenLon);
     SDL_DestroyTexture(tieude);
@@ -22,6 +22,23 @@ void inChoPoke(){
     SDL_FillRect(oTrong, NULL, SDL_MapRGB(oTrong->format, 128, 128, 128));
     SDL_Texture* textureOTrong = SDL_CreateTextureFromSurface(renderer, oTrong);
     SDL_FreeSurface(oTrong);
+    for (int i = 0; i < 4; i++){
+        inTextureLenManHinh(845 + i*105, 76, 70, 33, textureOTrong);
+    }
+    SDL_Texture* soLuong = NULL;
+    inVat(845, 76, 35, 33, "res/Vatpham/bong.png");
+    soLuong = dongChu("X " + std::to_string(bongPoke), 33, arial);
+    inTextureLenManHinh(880, 76, 35, 33, soLuong);
+    inVat(950, 76, 35, 33, "res/Vatpham/keoco.png");
+    soLuong = dongChu("X " + std::to_string(keoCo), 33, arial);
+    inTextureLenManHinh(985, 76, 35, 33, soLuong);
+    inVat(1055, 76, 35, 33, "res/Vatpham/keolua.png");
+    soLuong = dongChu("X " + std::to_string(keoLua), 33, arial);
+    inTextureLenManHinh(1090, 76, 35, 33, soLuong);
+    inVat(1160, 76, 35, 33, "res/Vatpham/keonuoc.png");
+    soLuong = dongChu("X " + std::to_string(keoNuoc), 33, arial);
+    inTextureLenManHinh(1195, 76, 35, 33, soLuong);
+    SDL_DestroyTexture(soLuong);
     for (int i = 0; i < 5; i ++){
         for (int j = 0; j < 3; j++){
             inTextureLenManHinh(856 + j*138, 125 + i*135, 92, 90, textureOTrong);

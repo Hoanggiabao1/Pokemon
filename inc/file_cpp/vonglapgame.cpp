@@ -7,7 +7,6 @@
 
 void vongLapGame(){
     khoiTaoPokedex();
-    khoiTaoGame();
     SDL_Event e;
     bool quit = false;
     while (title){
@@ -59,5 +58,4 @@ void vongLapGame(){
             }
         }
     }
-    ketThucGame();
 }

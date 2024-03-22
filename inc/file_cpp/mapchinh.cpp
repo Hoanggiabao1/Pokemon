@@ -336,12 +336,14 @@ void xuLiLoiThoai(bool &me, bool &boss, bool &dichuyen, int &lan, int voDich, in
 }
 
 void inMapChinh(int x_bando, int y_bando, int huongdi, int tuthe, bool me, bool boss, int lan, int voDich, int doiloithoai){
+    banDo = inAnhLen("res/Map/map2.jpg");
     inTextureLenManHinh(x_bando, y_bando, 960, 8000, banDo);
     inCoLenManHinh(x_bando, y_bando);
     inVatLenManHinh(x_bando, y_bando);
     inVatnVat(huongdi, tuthe);
     inNPCLenManHinh(x_bando, y_bando);
     inCayLenManHinh(x_bando, y_bando);
+    SDL_DestroyTexture(banDo);
     if(me){
         loiThoaiMe(lan, doiloithoai);
     }

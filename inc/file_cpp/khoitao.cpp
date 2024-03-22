@@ -32,11 +32,8 @@ int tiLeBat;
 int tic = 0;
 bool title = true;
 
-
-void khoiTaoGame(){
-    banDo = inAnhLen("res/Map/map2.jpg");
-}
-void ketThucGame(){
-    SDL_DestroyTexture(banDo);
-}
-
+//nhan vat
+int keoCo = 0;
+int keoLua = 0;
+int keoNuoc = 0;
+int bongPoke = 50;
