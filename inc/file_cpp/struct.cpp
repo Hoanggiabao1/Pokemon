@@ -24,6 +24,7 @@ struct Pokemon
 };
 
 Pokemon pokedex[15];
+Pokemon pokeNguoiChoi[15];
 
 void doiPokeMon(Pokemon &poke1, Pokemon &poke2){
     Pokemon poketg;
@@ -32,7 +33,7 @@ void doiPokeMon(Pokemon &poke1, Pokemon &poke2){
     poke2 = poketg;
 }
 
-void khoiTaoPokedex() {
+void khoiTaoPokedex(Pokemon pokedex[]) {
     //Ech co
     pokedex[0].maxHP = 50;
     pokedex[0].atk = 20;

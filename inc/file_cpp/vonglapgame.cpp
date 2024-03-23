@@ -6,7 +6,9 @@
 #include "file_cpp/tuido.cpp"
 
 void vongLapGame(){
-    khoiTaoPokedex();
+    khoiTaoPokedex(pokedex);
+    khoiTaoPokedex(pokeNguoiChoi);
+    khoiTaoGame();
     SDL_Event e;
     bool quit = false;
     while (title){
@@ -58,4 +60,5 @@ void vongLapGame(){
             }
         }
     }
+    ketThucGame();
 }

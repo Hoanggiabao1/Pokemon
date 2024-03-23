@@ -21,25 +21,17 @@ void xuLiBatPoke(bool &battle, bool &nemBong, int x_chuot, int y_chuot, bool &di
 }
 
 void inLuaChon(){
-    SDL_Texture* luaChon1 = dongChu("Chay", 40, arial);
-    SDL_Texture* luaChon2 = dongChu("Nem bong", 40, arial);
-    SDL_Surface* mauXanhLa = SDL_CreateRGBSurface(0, 400, 300, 32, 0, 0, 0, 0);
-    SDL_FillRect(mauXanhLa, NULL, SDL_MapRGB(mauXanhLa->format, 0, 102, 51));
-    SDL_Texture* hopLuaChon = SDL_CreateTextureFromSurface(renderer, mauXanhLa);
-    SDL_FreeSurface(mauXanhLa);
+    
     if(!nemBong){
         inTextureLenManHinh(200, 660, 400, 80, hopLuaChon);
         inTextureLenManHinh(300, 680, 120, 40, luaChon1);
         inTextureLenManHinh(680, 660, 400, 80, hopLuaChon);
         inTextureLenManHinh(720, 680, 300, 40, luaChon2);
     }
-    SDL_DestroyTexture(luaChon1);
-    SDL_DestroyTexture(luaChon2);
-    SDL_DestroyTexture(hopLuaChon);
 }
 
 void inBongPoke(int &x_bong, int &y_bong, bool &bongDenPoke, bool &inPoke){
-    inVat(x_bong, y_bong, 80, 80, "res/Vatpham/bong.png");
+    inTextureLenManHinh(x_bong, y_bong, 80, 80, anhBong);
     if(x_bong < 750){
         x_bong += 50;
     }
@@ -56,8 +48,6 @@ void inBongPoke(int &x_bong, int &y_bong, bool &bongDenPoke, bool &inPoke){
 
 void batPokeDcKo(int &x_bong, int &y_bong, bool &bongDenPoke, bool &nemBong, bool &battle, Pokemon &pokedex, bool &inPoke, int &tic){
      if (bongDenPoke){
-        SDL_Texture* thanhCong = dongChu("THANH CONG!", 40, pixel);
-        SDL_Texture* thatBai = dongChu("THAT BAI!", 40, pixel);
         tic += 1;
         if (tiLeBat > 50){
             if (tic >= 3){
@@ -101,13 +91,11 @@ void batPokeDcKo(int &x_bong, int &y_bong, bool &bongDenPoke, bool &nemBong, boo
                 inPoke = true;
             }
         }
-        SDL_DestroyTexture( thanhCong );
-        SDL_DestroyTexture( thatBai );
     }
 }
 
 void inBattlePoke(int random, bool &nemBong, int &x_bong, int &y_bong, bool &bongDenPoke, bool &battle, bool &inPoke, int &tic){
-    inVat(0, 0, 1280, 600, "res/Map/battle.jpg");
+    inTextureLenManHinh(0, 0, 1280, 600, mapBatPoke);
     if (inPoke){
         inVat(750, 250, 200, 200, pokedex[random].tenFileAnh);
     }
@@ -117,9 +105,9 @@ void inBattlePoke(int random, bool &nemBong, int &x_bong, int &y_bong, bool &bon
     }else {
         inLuaChon();
     }
-    inVat(600, 620, 40, 40, "res/Vatpham/bong.png");
+    inTextureLenManHinh(600, 620, 40, 40, anhBong);
     SDL_Texture* soLuong = dongChu("X " + std::to_string(bongPoke), 33, arial);
     inTextureLenManHinh(640, 620, 40, 40, soLuong);
     SDL_DestroyTexture(soLuong);
-    inVat(150, 250, 450, 450, "res/Nhanvat/trongbattle.png");
+    inTextureLenManHinh(150, 250, 450, 450, nhanVatBattle);
 }
