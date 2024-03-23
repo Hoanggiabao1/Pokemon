@@ -38,7 +38,7 @@ void inBongPoke(int &x_bong, int &y_bong, bool &bongDenPoke, bool &inPoke){
     if (y_bong > 250){
         y_bong -= 50;
     }
-    if (x_bong = 700 && y_bong = 250){
+    if (x_bong == 700 && y_bong == 250){
         inPoke = false;
     }
     if (x_bong >= 750 && y_bong <=250){
