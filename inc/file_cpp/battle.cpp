@@ -10,18 +10,16 @@ void xuLiBatPoke(bool &battle, bool &nemBong, int x_chuot, int y_chuot, bool &di
             if (bongPoke > 0){
                 nemBong = true;
                 bongPoke -= 1;
-                } else{
-                    battle = false;
-                    dichuyen = true;
-                }
-            
-            tiLeBat = rand()%100;
+                tiLeBat = rand()%100;
+            } else{
+                battle = false;
+                dichuyen = true;
+            }
         }
-}
+    }
 }
 
 void inLuaChon(){
-    
     if(!nemBong){
         inTextureLenManHinh(200, 660, 400, 80, hopLuaChon);
         inTextureLenManHinh(300, 680, 120, 40, luaChon1);
@@ -70,18 +68,19 @@ void batPokeDcKo(int &x_bong, int &y_bong, bool &bongDenPoke, bool &nemBong, boo
                 bongDenPoke = false;
                 nemBong = false;
                 battle = false;
+                soPoke += 1;
                 if (!pokedex.cohaykhong){
                     pokedex.cohaykhong = true;
                 } else{
                     switch (pokedex.he){
                     case 1:
-                        keoCo += 1;
+                        keoCo = keoCo + rand()%3 + 1;
                         break;
                     case 2:
-                        keoLua += 1;
+                        keoLua = keoLua + rand()%3 + 1;
                         break;
                     case 3:
-                        keoNuoc += 1;
+                        keoNuoc = keoNuoc + rand()%3 + 1;
                         break;
                     }
                 }

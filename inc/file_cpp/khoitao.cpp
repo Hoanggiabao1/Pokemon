@@ -6,6 +6,8 @@
 #include <iostream>
 
 //map chinh
+int buocdi = 0;
+int buoc = 0;
 int x_bando = 200;
 int y_bando = -7240;
 int huongdi = 0;
@@ -32,6 +34,7 @@ SDL_Texture* hangRaoNgang = NULL;
 SDL_Texture* hangRaoDoc = NULL;
 
 //battle
+bool battleNPC = false;
 bool battle = false;
 int randomPoke = 0;
 bool nemBong = false;
@@ -52,12 +55,15 @@ SDL_Texture* thatBai = NULL;
 //title
 int tic = 0;
 bool title = true;
+SDL_Texture* anhTitle = NULL;
+SDL_Texture* nhanVao = NULL;
 
 //nhan vat
 int keoCo = 0;
 int keoLua = 0;
 int keoNuoc = 0;
 int bongPoke = 50;
+int soPoke = 0;
 
 //tui do
 SDL_Surface* nenLon = NULL;
@@ -75,6 +81,13 @@ SDL_Texture* anhKeoCo = NULL;
 SDL_Texture* anhKeoLua = NULL;
 SDL_Texture* anhKeoNuoc = NULL;
 SDL_Texture* nhanVatBattle = NULL;
+SDL_Texture* conTro = NULL;
+bool controkeo = false;
+int vatpham;
+bool controhangpoke = false;
+bool controcotpoke = false;
+int hangPoke;
+int cotPoke;
 
 
 void khoiTaoGame(){
@@ -119,6 +132,11 @@ void khoiTaoGame(){
     anhKeoLua = inAnhLen("res/Vatpham/keolua.png");
     anhKeoNuoc = inAnhLen("res/Vatpham/keonuoc.png");
 
+    SDL_Surface* mauVang = SDL_CreateRGBSurface(0, 400, 300, 32, 0, 0, 0, 0);
+    SDL_FillRect(mauVang, NULL, SDL_MapRGB(mauVang->format, 255, 255, 0));
+    conTro = SDL_CreateTextureFromSurface(renderer, mauVang);
+    SDL_FreeSurface(mauVang);
+
     //battle
     luaChon1 = dongChu("Chay", 40, arial);
     luaChon2 = dongChu("Nem bong", 40, arial);
@@ -133,6 +151,10 @@ void khoiTaoGame(){
     mapBatPoke = inAnhLen("res/Map/battle.jpg");
     nhanVatBattle = inAnhLen("res/Nhanvat/trongbattle.png");
     
+    //title
+    anhTitle = inAnhLen("res/Map/title.jpg");
+    nhanVao = dongChu("NHAN VAO DAY", 40, pixel);
+
 }
 
 void ketThucGame(){
@@ -168,15 +190,21 @@ void ketThucGame(){
     SDL_DestroyTexture(anhKeoLua);
     SDL_DestroyTexture(anhKeoNuoc);
 
+    SDL_DestroyTexture(conTro);
+
     //battle
     SDL_DestroyTexture(luaChon1);
     SDL_DestroyTexture(luaChon2);
     SDL_DestroyTexture(hopLuaChon);
 
-    SDL_DestroyTexture( thanhCong );
-    SDL_DestroyTexture( thatBai );
+    SDL_DestroyTexture(thanhCong);
+    SDL_DestroyTexture(thatBai);
 
     SDL_DestroyTexture(mapBatPoke);
     SDL_DestroyTexture(nhanVatBattle);
+
+    //title
+    SDL_DestroyTexture (anhTitle);
+    SDL_DestroyTexture (nhanVao);
 
 }

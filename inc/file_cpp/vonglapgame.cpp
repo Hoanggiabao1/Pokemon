@@ -11,28 +11,12 @@ void vongLapGame(){
     khoiTaoGame();
     SDL_Event e;
     bool quit = false;
-    while (title){
-        SDL_RenderClear(renderer);
-        inTitle();
-        SDL_RenderPresent(renderer);
-        tic += 1;
-        if (tic == 4000){
-            title = false;
-            quit = true;
-        }
-        while (SDL_PollEvent(&e) != 0) {
-            if (e.type == SDL_QUIT) {
-                quit = true;
-                title = false;
-            } else if (e.type == SDL_MOUSEBUTTONDOWN) {
-                title = false;
-                tic = 0;
-            }
-        }
-    }
     while (!quit) {
         SDL_RenderClear(renderer);
-        if(!battle){
+        if (title){
+            inTitle();
+        }
+        if(!battle && !battleNPC && !title){
             inMapChinh(x_bando, y_bando, huongdi, tuthe, me, boss, lan, voDich, doiloithoai);
             inTuiDo();
             }
@@ -45,7 +29,7 @@ void vongLapGame(){
             if (e.type == SDL_QUIT) {
                 quit = true;
             } else if (e.type == SDL_KEYDOWN) {
-                if (dichuyen){
+                if (dichuyen && !battle){
                     diChuyenTrenBanDo(e, x_bando, y_bando, huongdi, tuthe, battle, dichuyen, randomPoke);
                 }
                 if (e.key.keysym.sym == SDLK_e){
@@ -54,7 +38,11 @@ void vongLapGame(){
             }
             if (e.type == SDL_MOUSEBUTTONDOWN){
                 int x_chuot, y_chuot;
+                if (title){
+                    title = false;
+                }
                 SDL_GetMouseState(&x_chuot, &y_chuot);
+                xuLiConTro(x_chuot, y_chuot);
                 xuLiLoiThoai(me, boss, dichuyen, lan, voDich, doiloithoai);
                 xuLiBatPoke (battle, nemBong, x_chuot, y_chuot, dichuyen, tiLeBat);
             }

@@ -141,9 +141,10 @@ bool vaChamVien(int x_bando, int y_bando){
         || (y_bando > -3240 && y_bando < -2960 && x_bando < 280 && x_bando > 40)
         || (y_bando > -3120 && y_bando < -2880 && x_bando < -160 && x_bando > -400)
         || (y_bando > -2520 && y_bando < -2200 && x_bando < 340 && x_bando > -280)
-        || (y_bando > -2560 && y_bando < -2520 && x_bando < 280 && x_bando > 40)
+        || (y_bando > -2540 && y_bando < -2480 && x_bando < 240 && x_bando > 80)
         || (y_bando > -2080 && y_bando < -1800 && x_bando < -160 && x_bando > -400)
         || (y_bando > -180 && y_bando < -100 && x_bando < -20 && x_bando > -100)
+        || (y_bando > - 6720 && soPoke == 0) || (y_bando > -5680 && soPoke < 3)
         || y_bando < -7480 || y_bando > 320 || x_bando > 320 || x_bando < -440;
 
 }
@@ -172,7 +173,6 @@ bool trenCo(int x_bando, int y_bando){
         
 }
 
-int buocdi = 0;
 void diChuyenTrenBanDo(SDL_Event e, int &x_bando, int &y_bando, int &huongdi, int &tuthe, bool &battle, bool &dichuyen, int &random){
     switch (e.key.keysym.sym) {
         case SDLK_a:
@@ -180,8 +180,10 @@ void diChuyenTrenBanDo(SDL_Event e, int &x_bando, int &y_bando, int &huongdi, in
             tuthe += 1;
             if (tuthe == 4){tuthe = 0;}
             x_bando += 20;
+            buoc += 1;
             if(vaChamVien(x_bando, y_bando)){
                 x_bando -=20;
+                buoc -=1;
             }
             if (trenCo(x_bando, y_bando)){
                 buocdi +=1;
@@ -192,8 +194,10 @@ void diChuyenTrenBanDo(SDL_Event e, int &x_bando, int &y_bando, int &huongdi, in
             tuthe += 1;
             if (tuthe == 4){tuthe = 0;}
             y_bando -= 20;
+            buoc += 1;
             if(vaChamVien(x_bando, y_bando)){
                 y_bando +=20;
+                buoc -= 1;
             }
             if (trenCo(x_bando, y_bando)){
                 buocdi +=1;
@@ -204,8 +208,10 @@ void diChuyenTrenBanDo(SDL_Event e, int &x_bando, int &y_bando, int &huongdi, in
             tuthe += 1;
             if (tuthe == 4){tuthe = 0;}
             x_bando -= 20;
+            buoc += 1;
             if(vaChamVien(x_bando, y_bando)){
                 x_bando += 20;
+                buoc -= 1;
             }
             if (trenCo(x_bando, y_bando)){
                 buocdi +=1;
@@ -216,8 +222,10 @@ void diChuyenTrenBanDo(SDL_Event e, int &x_bando, int &y_bando, int &huongdi, in
             tuthe += 1;
             if (tuthe == 4){tuthe = 0;}
             y_bando += 20;
+            buoc += 1;
             if(vaChamVien(x_bando, y_bando)){
                 y_bando -= 20;
+                buoc -= 1;
             }
             if (trenCo(x_bando, y_bando)){
                 buocdi +=1;
@@ -244,6 +252,11 @@ void diChuyenTrenBanDo(SDL_Event e, int &x_bando, int &y_bando, int &huongdi, in
             }
         }
         buocdi = 0;
+    }
+
+    if (buoc >= 500){
+        bongPoke += 1;
+        buoc = 0;
     }
 }
 

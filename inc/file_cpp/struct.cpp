@@ -16,7 +16,7 @@ struct Pokemon
     int speed;
     int he;
     Chieu hocduoc[3];
-    int keodaan;
+    int idPoke;
     int cap;
     bool cohaykhong;
     int luongHPhientai;
@@ -40,7 +40,7 @@ void khoiTaoPokedex(Pokemon pokedex[]) {
     pokedex[0].def = 20;
     pokedex[0].speed = 10;
     pokedex[0].he = 1;
-    pokedex[0].keodaan = 0;
+    pokedex[0].idPoke = 0;
     pokedex[0].cap = 1;
     pokedex[0].cohaykhong = false;
     pokedex[0].luongHPhientai = 50;
@@ -52,7 +52,7 @@ void khoiTaoPokedex(Pokemon pokedex[]) {
     pokedex[1].def = 20;
     pokedex[1].speed = 10;
     pokedex[1].he = 2;
-    pokedex[1].keodaan = 0;
+    pokedex[1].idPoke = 1;
     pokedex[1].cap = 1;
     pokedex[1].cohaykhong = false;
     pokedex[1].luongHPhientai = 50;
@@ -64,7 +64,7 @@ void khoiTaoPokedex(Pokemon pokedex[]) {
     pokedex[2].def = 20;
     pokedex[2].speed = 10;
     pokedex[2].he = 3;
-    pokedex[2].keodaan = 0;
+    pokedex[2].idPoke = 2;
     pokedex[2].cap = 1;
     pokedex[2].cohaykhong = false;
     pokedex[2].luongHPhientai = 50;
@@ -76,7 +76,7 @@ void khoiTaoPokedex(Pokemon pokedex[]) {
     pokedex[3].def = 20;
     pokedex[3].speed = 10;
     pokedex[3].he = 1;
-    pokedex[3].keodaan = 0;
+    pokedex[3].idPoke = 3;
     pokedex[3].cap = 1;
     pokedex[3].cohaykhong = false;
     pokedex[3].luongHPhientai = 50;
@@ -88,7 +88,7 @@ void khoiTaoPokedex(Pokemon pokedex[]) {
     pokedex[4].def = 20;
     pokedex[4].speed = 10;
     pokedex[4].he = 2;
-    pokedex[4].keodaan = 0;
+    pokedex[4].idPoke = 4;
     pokedex[4].cap = 1;
     pokedex[4].cohaykhong = false;
     pokedex[4].luongHPhientai = 50;
@@ -100,7 +100,7 @@ void khoiTaoPokedex(Pokemon pokedex[]) {
     pokedex[5].def = 20;
     pokedex[5].speed = 10;
     pokedex[5].he = 3;
-    pokedex[5].keodaan = 0;
+    pokedex[5].idPoke = 5;
     pokedex[5].cap = 1;
     pokedex[5].cohaykhong = false;
     pokedex[5].luongHPhientai = 50;
@@ -112,7 +112,7 @@ void khoiTaoPokedex(Pokemon pokedex[]) {
     pokedex[6].def = 20;
     pokedex[6].speed = 10;
     pokedex[6].he = 1;
-    pokedex[6].keodaan = 0;
+    pokedex[6].idPoke = 6;
     pokedex[6].cap = 1;
     pokedex[6].cohaykhong = false;
     pokedex[6].luongHPhientai = 50;
@@ -124,7 +124,7 @@ void khoiTaoPokedex(Pokemon pokedex[]) {
     pokedex[7].def = 20;
     pokedex[7].speed = 10;
     pokedex[7].he = 2;
-    pokedex[7].keodaan = 0;
+    pokedex[7].idPoke = 7;
     pokedex[7].cap = 1;
     pokedex[7].cohaykhong = false;
     pokedex[7].luongHPhientai = 50;
@@ -136,7 +136,7 @@ void khoiTaoPokedex(Pokemon pokedex[]) {
     pokedex[8].def = 20;
     pokedex[8].speed = 10;
     pokedex[8].he = 3;
-    pokedex[8].keodaan = 0;
+    pokedex[8].idPoke = 8;
     pokedex[8].cap = 1;
     pokedex[8].cohaykhong = false;
     pokedex[8].luongHPhientai = 50;
@@ -148,7 +148,7 @@ void khoiTaoPokedex(Pokemon pokedex[]) {
     pokedex[9].def = 20;
     pokedex[9].speed = 10;
     pokedex[9].he = 1;
-    pokedex[9].keodaan = 0;
+    pokedex[9].idPoke = 9;
     pokedex[9].cap = 1;
     pokedex[9].cohaykhong = false;
     pokedex[9].luongHPhientai = 50;
@@ -160,7 +160,7 @@ void khoiTaoPokedex(Pokemon pokedex[]) {
     pokedex[10].def = 20;
     pokedex[10].speed = 10;
     pokedex[10].he = 2;
-    pokedex[10].keodaan = 0;
+    pokedex[10].idPoke = 10;
     pokedex[10].cap = 1;
     pokedex[10].cohaykhong = false;
     pokedex[10].luongHPhientai = 50;
@@ -172,7 +172,7 @@ void khoiTaoPokedex(Pokemon pokedex[]) {
     pokedex[11].def = 20;
     pokedex[11].speed = 10;
     pokedex[11].he = 3;
-    pokedex[11].keodaan = 0;
+    pokedex[11].idPoke = 11;
     pokedex[11].cap = 1;
     pokedex[11].cohaykhong = false;
     pokedex[11].luongHPhientai = 50;
@@ -184,7 +184,7 @@ void khoiTaoPokedex(Pokemon pokedex[]) {
     pokedex[12].def = 20;
     pokedex[12].speed = 10;
     pokedex[12].he = 1;
-    pokedex[12].keodaan = 0;
+    pokedex[12].idPoke = 12;
     pokedex[12].cap = 1;
     pokedex[12].cohaykhong = false;
     pokedex[12].luongHPhientai = 50;
@@ -196,7 +196,7 @@ void khoiTaoPokedex(Pokemon pokedex[]) {
     pokedex[13].def = 20;
     pokedex[13].speed = 10;
     pokedex[13].he = 2;
-    pokedex[13].keodaan = 0;
+    pokedex[13].idPoke = 13;
     pokedex[13].cap = 1;
     pokedex[13].cohaykhong = false;
     pokedex[13].luongHPhientai = 50;
@@ -208,9 +208,96 @@ void khoiTaoPokedex(Pokemon pokedex[]) {
     pokedex[14].def = 20;
     pokedex[14].speed = 10;
     pokedex[14].he = 3;
-    pokedex[14].keodaan = 0;
+    pokedex[14].idPoke = 14;
     pokedex[14].cap = 1;
     pokedex[14].cohaykhong = false;
     pokedex[14].luongHPhientai = 50;
     pokedex[14].tenFileAnh = "res/Poke/382-Kyogre.png";
+}
+
+void doiAnhCap1(Pokemon &poke){
+    switch (poke.idPoke)
+    {
+    case 0:
+        poke.tenFileAnh = "res/Poke/002-Ivysaur.png";
+        break;
+    case 1:
+        poke.tenFileAnh = "res/Poke/005-Charmeleon.png";
+        break;
+    case 2:
+        poke.tenFileAnh = "res/Poke/008-Wartortle.png";
+        break;
+    case 3:
+        poke.tenFileAnh = "res/Poke/103-Exeggutor.png";
+        break;
+    case 4:
+        poke.tenFileAnh = "res/Poke/059-Arcanine.png";
+        break;
+    case 5:
+        poke.tenFileAnh = "res/Poke/121-Starmie.png";
+        break;
+    case 6:
+        poke.tenFileAnh = "res/Poke/388-Grotle.png";
+        break;
+    case 7:
+        poke.tenFileAnh = "res/Poke/391-Monferno.png";
+        break;
+    case 8:
+        poke.tenFileAnh = "res/Poke/394-Prinplup.png";
+        break;
+    case 9:
+        poke.tenFileAnh = "res/Poke/651-Quilladin.png";
+        break;
+    case 10:
+        poke.tenFileAnh = "res/Poke/654-Braixen.png";
+        break;
+    case 11:
+        poke.tenFileAnh = "res/Poke/657-Frogadier.png";
+        break;
+    }
+}
+
+void doiAnhCap2(Pokemon &poke){
+    switch (poke.idPoke)
+    {
+    case 0:
+        poke.tenFileAnh = "res/Poke/003-Venusaur.png";
+        break;
+    case 1:
+        poke.tenFileAnh = "res/Poke/006-Charizard.png";
+        break;
+    case 2:
+        poke.tenFileAnh = "res/Poke/009-Blastoise.png";
+        break;
+    case 6:
+        poke.tenFileAnh = "res/Poke/389-Torterra.png";
+        break;
+    case 7:
+        poke.tenFileAnh = "res/Poke/392-Infernape.png";
+        break;
+    case 8:
+        poke.tenFileAnh = "res/Poke/395-Empoleon.png";
+        break;
+    case 9:
+        poke.tenFileAnh = "res/Poke/652-Chesnaught.png";
+        break;
+    case 10:
+        poke.tenFileAnh = "res/Poke/655-Delphox.png";
+        break;
+    case 11:
+        poke.tenFileAnh = "res/Poke/658-Greninja.png";
+        break;
+    }
+}
+
+void tienHoa(Pokemon pokedex[]){
+    for (int i = 0; i < 12; i++){
+        if (pokedex[i].cap == 5){
+            doiAnhCap1(pokedex[i]);
+        }
+        if (pokedex[i].cap == 10){
+            doiAnhCap2(pokedex[i]);
+        }
+    }
+    
 }
