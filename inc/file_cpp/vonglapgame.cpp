@@ -21,8 +21,10 @@ void vongLapGame(){
             inTuiDo();
             }
         if (battle){
-            SDL_Delay(1000);
             inBattlePoke(randomPoke, nemBong, x_bong, y_bong, bongDenPoke, battle, inPoke, tic);
+        }
+        if (battleNPC){
+            inBattleNPC();
         }
         SDL_RenderPresent(renderer);
         while (SDL_PollEvent(&e) != 0) {
@@ -34,6 +36,7 @@ void vongLapGame(){
                 }
                 if (e.key.keysym.sym == SDLK_e){
                     kichhoat(me, boss, dichuyen, x_bando, y_bando);
+                    xuLiLoiThoai(me, boss, dichuyen, lan, voDich, doiloithoai);
                 }
             }
             if (e.type == SDL_MOUSEBUTTONDOWN){
@@ -43,8 +46,10 @@ void vongLapGame(){
                 }
                 SDL_GetMouseState(&x_chuot, &y_chuot);
                 xuLiConTro(x_chuot, y_chuot);
-                xuLiLoiThoai(me, boss, dichuyen, lan, voDich, doiloithoai);
                 xuLiBatPoke (battle, nemBong, x_chuot, y_chuot, dichuyen, tiLeBat);
+                if (battleNPC){
+                    battleNPC = false;
+                }
             }
         }
     }

@@ -31,15 +31,18 @@ void inLuaChon(){
 void inBongPoke(int &x_bong, int &y_bong, bool &bongDenPoke, bool &inPoke){
     inTextureLenManHinh(x_bong, y_bong, 80, 80, anhBong);
     if(x_bong < 750){
-        x_bong += 50;
+        x_bong += 1;
     }
-    if (y_bong > 250){
-        y_bong -= 50;
+    if (y_bong > 150 && x_bong < 650){
+        y_bong -= 1;
     }
-    if (x_bong == 700 && y_bong == 250){
+    if (y_bong >= 150 && x_bong >= 650 && y_bong < 250){
+        y_bong +=1;
+    }
+    if (x_bong >= 730 && y_bong >= 230){
         inPoke = false;
     }
-    if (x_bong >= 750 && y_bong <=250){
+    if (x_bong == 750 && y_bong == 250){
         bongDenPoke = true;
     }
 }
@@ -48,29 +51,29 @@ void batPokeDcKo(int &x_bong, int &y_bong, bool &bongDenPoke, bool &nemBong, boo
      if (bongDenPoke){
         tic += 1;
         if (tiLeBat > 50){
-            if (tic >= 3){
+            if (tic >= 3000){
                 inPoke = true;
-            }
-            if (tic >= 5){
-                tic = 0;
-                nemBong = false;
                 inTextureLenManHinh(700, 190, 320, 40, thatBai);
+                x_bong = 350;
+                y_bong = 350;
+            }
+            if (tic >= 4000){
+                nemBong = false;
+                tic = 0;
                 bongDenPoke = false;
-                x_bong = 400;
-                y_bong = 400;
             }
         } else {
-            if (tic >= 5){
+            if (tic >= 4000){
                 inTextureLenManHinh(700, 190, 320, 40, thanhCong);
             }
-            if (tic >= 8){
+            if (tic >= 6000){
                 tic = 0;
                 bongDenPoke = false;
                 nemBong = false;
                 battle = false;
-                soPoke += 1;
                 if (!pokedex.cohaykhong){
                     pokedex.cohaykhong = true;
+                    soPoke += 1;
                 } else{
                     switch (pokedex.he){
                     case 1:
@@ -84,8 +87,8 @@ void batPokeDcKo(int &x_bong, int &y_bong, bool &bongDenPoke, bool &nemBong, boo
                         break;
                     }
                 }
-                x_bong = 400;
-                y_bong = 400;
+                x_bong = 350;
+                y_bong = 350;
                 dichuyen = true;
                 inPoke = true;
             }
@@ -98,7 +101,7 @@ void inBattlePoke(int random, bool &nemBong, int &x_bong, int &y_bong, bool &bon
     if (inPoke){
         inVat(750, 250, 200, 200, pokedex[random].tenFileAnh);
     }
-    batPokeDcKo(x_bong, y_bong, bongDenPoke, nemBong, battle, pokedex[random], inPoke, tic);
+    batPokeDcKo(x_bong, y_bong, bongDenPoke, nemBong, battle, pokeNguoiChoi[random], inPoke, tic);
     if (nemBong){
         inBongPoke(x_bong, y_bong, bongDenPoke, inPoke);
     }else {
@@ -109,4 +112,8 @@ void inBattlePoke(int random, bool &nemBong, int &x_bong, int &y_bong, bool &bon
     inTextureLenManHinh(640, 620, 40, 40, soLuong);
     SDL_DestroyTexture(soLuong);
     inTextureLenManHinh(150, 250, 450, 450, nhanVatBattle);
+}
+
+void inBattleNPC(){
+    inTextureLenManHinh(0, 0, 1280, 800, mapDanhNPC);
 }

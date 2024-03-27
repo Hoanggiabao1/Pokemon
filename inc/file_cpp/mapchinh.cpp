@@ -144,7 +144,7 @@ bool vaChamVien(int x_bando, int y_bando){
         || (y_bando > -2540 && y_bando < -2480 && x_bando < 240 && x_bando > 80)
         || (y_bando > -2080 && y_bando < -1800 && x_bando < -160 && x_bando > -400)
         || (y_bando > -180 && y_bando < -100 && x_bando < -20 && x_bando > -100)
-        || (y_bando > - 6720 && soPoke == 0) || (y_bando > -5680 && soPoke < 3)
+        || (y_bando > - 6720 && soPoke == 0) || (y_bando > -5680 && soPoke < 3) || (y_bando > -800 && soPoke < 15)
         || y_bando < -7480 || y_bando > 320 || x_bando > 320 || x_bando < -440;
 
 }
@@ -335,6 +335,7 @@ void xuLiLoiThoai(bool &me, bool &boss, bool &dichuyen, int &lan, int voDich, in
             doiloithoai = 0;
             boss = false;
             dichuyen = true;
+            battleNPC = true;
         }
         if (doiloithoai == 3 && voDich == 1){
             doiloithoai = 0;

@@ -28,12 +28,12 @@ void inChoPoke(){
     for (int i = 0; i < 5; i ++){
         for (int j = 0; j < 3; j++){
             inTextureLenManHinh(856 + j*138, 125 + i*135, 92, 90, textureOTrong);
-            if (pokedex[i*3+j].cohaykhong){
-                inVat(856 + j*138, 125 + i*135, 80, 80, pokedex[i*3+j].tenFileAnh);
-                SDL_Texture* level = dongChu("Level " + std::to_string(pokedex[i*3+j].cap), 10, arial);
+            if (pokeNguoiChoi[i*3+j].cohaykhong){
+                inVat(856 + j*138, 125 + i*135, 80, 80, pokeNguoiChoi[i*3+j].tenFileAnh);
+                SDL_Texture* level = dongChu("Level " + std::to_string(pokeNguoiChoi[i*3+j].cap), 10, arial);
                 inTextureLenManHinh(856 + j*138, 185 + i*135, 80, 20, level);
                 SDL_DestroyTexture(level);
-                switch (pokedex[i*3+j].he){
+                switch (pokeNguoiChoi[i*3+j].he){
                 case 1:
                     inTextureLenManHinh(916 + j*138, 125 + i*135, 20, 20, iconHeCo);
                     break;
@@ -102,27 +102,27 @@ void xuLiConTro(int x_chuot, int y_chuot){
 void anKeo(){
     if (controhangpoke && controcotpoke && controkeo){
         if (vatpham == 1 && cotPoke == 0){
-            if (keoCo > 0 && pokedex[hangPoke*3 + cotPoke].cap < 15 && pokedex[hangPoke*3 + cotPoke].cohaykhong){
+            if (keoCo > 0 && pokeNguoiChoi[hangPoke*3 + cotPoke].cap < 15 && pokeNguoiChoi[hangPoke*3 + cotPoke].cohaykhong){
                 keoCo -= 1;
-                pokedex[hangPoke*3 + cotPoke].cap += 1;
+                pokeNguoiChoi[hangPoke*3 + cotPoke].cap += 1;
             }
         }
         if (vatpham == 2 && cotPoke == 1){
-            if(keoLua > 0 && pokedex[hangPoke*3 + cotPoke].cap < 15 && pokedex[hangPoke*3 + cotPoke].cohaykhong){
+            if(keoLua > 0 && pokeNguoiChoi[hangPoke*3 + cotPoke].cap < 15 && pokeNguoiChoi[hangPoke*3 + cotPoke].cohaykhong){
                 keoLua -= 1;
-                pokedex[hangPoke*3 + cotPoke].cap += 1;
+                pokeNguoiChoi[hangPoke*3 + cotPoke].cap += 1;
             }
         }
         if (vatpham == 3 && cotPoke == 2){
-            if(keoNuoc > 0 && pokedex[hangPoke*3 + cotPoke].cap < 15 && pokedex[hangPoke*3 + cotPoke].cohaykhong){
+            if(keoNuoc > 0 && pokeNguoiChoi[hangPoke*3 + cotPoke].cap < 15 && pokeNguoiChoi[hangPoke*3 + cotPoke].cohaykhong){
                 keoNuoc -= 1;
-                pokedex[hangPoke*3 + cotPoke].cap += 1;
+                pokeNguoiChoi[hangPoke*3 + cotPoke].cap += 1;
             }
         }
         controhangpoke = false;
         controcotpoke = false;
         controkeo = false;
-        tienHoa(pokedex);
+        tienHoa(pokeNguoiChoi);
     }
 }
 

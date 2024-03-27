@@ -38,8 +38,8 @@ bool battleNPC = false;
 bool battle = false;
 int randomPoke = 0;
 bool nemBong = false;
-int x_bong = 400;
-int y_bong = 400;
+int x_bong = 350;
+int y_bong = 350;
 bool bongDenPoke = false;
 bool inPoke = true;
 int tiLeBat;
@@ -49,6 +49,7 @@ SDL_Texture* luaChon2 = NULL;
 SDL_Texture* hopLuaChon = NULL;
 SDL_Texture* thanhCong = NULL;
 SDL_Texture* thatBai = NULL;
+SDL_Texture* mapDanhNPC = NULL;
 
 
 
@@ -93,7 +94,7 @@ int cotPoke;
 void khoiTaoGame(){
     //mapchinh
     co = inAnhLen("res/Vatthe/grass.png");
-    banDo = inAnhLen("res/Map/map2.jpg");
+    banDo = inAnhLen("res/Map/map.jpg");
     cay = inAnhLen("res/Vatthe/cay.png");
     gym = inAnhLen("res/Nha/gym.png");
     nhaNPC1 = inAnhLen("res/Nha/nhaNPC1.png");
@@ -148,8 +149,10 @@ void khoiTaoGame(){
     thanhCong = dongChu("THANH CONG!", 40, pixel);
     thatBai = dongChu("THAT BAI!", 40, pixel);
 
-    mapBatPoke = inAnhLen("res/Map/battle.jpg");
+    mapBatPoke = inAnhLen("res/Map/danhnhau3.png");
     nhanVatBattle = inAnhLen("res/Nhanvat/trongbattle.png");
+
+    mapDanhNPC = inAnhLen("res/Map/danhnhau2.png");
     
     //title
     anhTitle = inAnhLen("res/Map/title.jpg");
