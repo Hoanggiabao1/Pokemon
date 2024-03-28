@@ -298,13 +298,15 @@ void loiThoaiBoss(int voDich, int doiloithoai){
 }
 
 void kichhoat(bool &me, bool &boss, bool &dichuyen, int x_bando, int y_bando){
-    if (x_bando == 160 && y_bando == -7240){
-        me = true;
-        dichuyen = false;
-    }
-    if (x_bando == -60 && y_bando == -180){
-        boss = true;
-        dichuyen = false;
+    if (!battle && !battleNPC){
+        if (x_bando == 160 && y_bando == -7240){
+            me = true;
+            dichuyen = false;
+        }
+        if (x_bando == -60 && y_bando == -180){
+            boss = true;
+            dichuyen = false;
+        }
     }
 }
 

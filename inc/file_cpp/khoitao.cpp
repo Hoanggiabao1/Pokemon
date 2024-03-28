@@ -67,7 +67,7 @@ int keoCo = 0;
 int keoLua = 0;
 int keoNuoc = 0;
 int bongPoke = 50;
-int soPoke = 15;
+int soPoke = 0;
 
 //tui do
 SDL_Surface* nenLon = NULL;

@@ -42,7 +42,7 @@ void khoiTaoPokedex(Pokemon pokedex[]) {
     pokedex[0].he = 1;
     pokedex[0].idPoke = 0;
     pokedex[0].cap = 1;
-    pokedex[0].cohaykhong = true;
+    pokedex[0].cohaykhong = false;
     pokedex[0].luongHPhientai = 50;
     pokedex[0].tenFileAnh = "res/Poke/001-Bulbasaur.png";
     
@@ -54,7 +54,7 @@ void khoiTaoPokedex(Pokemon pokedex[]) {
     pokedex[1].he = 2;
     pokedex[1].idPoke = 1;
     pokedex[1].cap = 1;
-    pokedex[1].cohaykhong = true;
+    pokedex[1].cohaykhong = false;
     pokedex[1].luongHPhientai = 50;
     pokedex[1].tenFileAnh = "res/Poke/004-Charmander.png";
 
@@ -66,7 +66,7 @@ void khoiTaoPokedex(Pokemon pokedex[]) {
     pokedex[2].he = 3;
     pokedex[2].idPoke = 2;
     pokedex[2].cap = 1;
-    pokedex[2].cohaykhong = true;
+    pokedex[2].cohaykhong = false;
     pokedex[2].luongHPhientai = 50;
     pokedex[2].tenFileAnh = "res/Poke/007-Squirtle.png";
 
@@ -78,7 +78,7 @@ void khoiTaoPokedex(Pokemon pokedex[]) {
     pokedex[3].he = 1;
     pokedex[3].idPoke = 3;
     pokedex[3].cap = 1;
-    pokedex[3].cohaykhong = true;
+    pokedex[3].cohaykhong = false;
     pokedex[3].luongHPhientai = 50;
     pokedex[3].tenFileAnh = "res/Poke/102-Exeggcute.png";
     
@@ -90,7 +90,7 @@ void khoiTaoPokedex(Pokemon pokedex[]) {
     pokedex[4].he = 2;
     pokedex[4].idPoke = 4;
     pokedex[4].cap = 1;
-    pokedex[4].cohaykhong = true;
+    pokedex[4].cohaykhong = false;
     pokedex[4].luongHPhientai = 50;
     pokedex[4].tenFileAnh = "res/Poke/058-Growlithe.png";
 
@@ -102,7 +102,7 @@ void khoiTaoPokedex(Pokemon pokedex[]) {
     pokedex[5].he = 3;
     pokedex[5].idPoke = 5;
     pokedex[5].cap = 1;
-    pokedex[5].cohaykhong = true;
+    pokedex[5].cohaykhong = false;
     pokedex[5].luongHPhientai = 50;
     pokedex[5].tenFileAnh = "res/Poke/120-Staryu.png";
 
@@ -114,7 +114,7 @@ void khoiTaoPokedex(Pokemon pokedex[]) {
     pokedex[6].he = 1;
     pokedex[6].idPoke = 6;
     pokedex[6].cap = 1;
-    pokedex[6].cohaykhong = true;
+    pokedex[6].cohaykhong = false;
     pokedex[6].luongHPhientai = 50;
     pokedex[6].tenFileAnh = "res/Poke/387-Turtwig.png";
     
@@ -126,7 +126,7 @@ void khoiTaoPokedex(Pokemon pokedex[]) {
     pokedex[7].he = 2;
     pokedex[7].idPoke = 7;
     pokedex[7].cap = 1;
-    pokedex[7].cohaykhong = true;
+    pokedex[7].cohaykhong = false;
     pokedex[7].luongHPhientai = 50;
     pokedex[7].tenFileAnh = "res/Poke/390-Chimchar.png";
 
@@ -138,7 +138,7 @@ void khoiTaoPokedex(Pokemon pokedex[]) {
     pokedex[8].he = 3;
     pokedex[8].idPoke = 8;
     pokedex[8].cap = 1;
-    pokedex[8].cohaykhong = true;
+    pokedex[8].cohaykhong = false;
     pokedex[8].luongHPhientai = 50;
     pokedex[8].tenFileAnh = "res/Poke/393-Piplup.png";
 
@@ -150,7 +150,7 @@ void khoiTaoPokedex(Pokemon pokedex[]) {
     pokedex[9].he = 1;
     pokedex[9].idPoke = 9;
     pokedex[9].cap = 1;
-    pokedex[9].cohaykhong = true;
+    pokedex[9].cohaykhong = false;
     pokedex[9].luongHPhientai = 50;
     pokedex[9].tenFileAnh = "res/Poke/650-Chespin.png";
     
@@ -162,7 +162,7 @@ void khoiTaoPokedex(Pokemon pokedex[]) {
     pokedex[10].he = 2;
     pokedex[10].idPoke = 10;
     pokedex[10].cap = 1;
-    pokedex[10].cohaykhong = true;
+    pokedex[10].cohaykhong = false;
     pokedex[10].luongHPhientai = 50;
     pokedex[10].tenFileAnh = "res/Poke/653-Fennekin.png";
 
@@ -174,7 +174,7 @@ void khoiTaoPokedex(Pokemon pokedex[]) {
     pokedex[11].he = 3;
     pokedex[11].idPoke = 11;
     pokedex[11].cap = 1;
-    pokedex[11].cohaykhong = true;
+    pokedex[11].cohaykhong = false;
     pokedex[11].luongHPhientai = 50;
     pokedex[11].tenFileAnh = "res/Poke/656-Froakie.png";
 
@@ -186,7 +186,7 @@ void khoiTaoPokedex(Pokemon pokedex[]) {
     pokedex[12].he = 1;
     pokedex[12].idPoke = 12;
     pokedex[12].cap = 15;
-    pokedex[12].cohaykhong = true;
+    pokedex[12].cohaykhong = false;
     pokedex[12].luongHPhientai = 50;
     pokedex[12].tenFileAnh = "res/Poke/384-Rayquaza.png";
     
@@ -198,7 +198,7 @@ void khoiTaoPokedex(Pokemon pokedex[]) {
     pokedex[13].he = 2;
     pokedex[13].idPoke = 13;
     pokedex[13].cap = 15;
-    pokedex[13].cohaykhong = true;
+    pokedex[13].cohaykhong = false;
     pokedex[13].luongHPhientai = 50;
     pokedex[13].tenFileAnh = "res/Poke/383-Groudon.png";
 
@@ -210,7 +210,7 @@ void khoiTaoPokedex(Pokemon pokedex[]) {
     pokedex[14].he = 3;
     pokedex[14].idPoke = 14;
     pokedex[14].cap = 15;
-    pokedex[14].cohaykhong = true;
+    pokedex[14].cohaykhong = false;
     pokedex[14].luongHPhientai = 50;
     pokedex[14].tenFileAnh = "res/Poke/382-Kyogre.png";
 }
