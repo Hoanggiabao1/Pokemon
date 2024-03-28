@@ -47,8 +47,17 @@ void vongLapGame(){
                 SDL_GetMouseState(&x_chuot, &y_chuot);
                 xuLiConTro(x_chuot, y_chuot);
                 xuLiBatPoke (battle, nemBong, x_chuot, y_chuot, dichuyen, tiLeBat);
-                if (battleNPC){
+                if (battleNPC && !chonPoke){
                     battleNPC = false;
+                }
+                if (chonPoke){
+                    if (x_chuot >= 1090 && x_chuot <= 1270 && y_chuot >= 730 && y_chuot <= 790){
+                        chonPoke = false;
+                        battleNPC = false;
+                    }
+                    if (x_chuot >= 900 && x_chuot <= 1080 && y_chuot >= 730 && y_chuot <= 790){
+                        chonPoke = false;
+                    }
                 }
             }
         }

@@ -336,6 +336,7 @@ void xuLiLoiThoai(bool &me, bool &boss, bool &dichuyen, int &lan, int voDich, in
             boss = false;
             dichuyen = true;
             battleNPC = true;
+            chonPoke = true;
         }
         if (doiloithoai == 3 && voDich == 1){
             doiloithoai = 0;

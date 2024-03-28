@@ -66,7 +66,7 @@ void batPokeDcKo(int &x_bong, int &y_bong, bool &bongDenPoke, bool &nemBong, boo
             if (tic >= 4000){
                 inTextureLenManHinh(700, 190, 320, 40, thanhCong);
             }
-            if (tic >= 6000){
+            if (tic >= 5000){
                 tic = 0;
                 bongDenPoke = false;
                 nemBong = false;
@@ -114,6 +114,43 @@ void inBattlePoke(int random, bool &nemBong, int &x_bong, int &y_bong, bool &bon
     inTextureLenManHinh(150, 250, 450, 450, nhanVatBattle);
 }
 
+void inChonPoke(){
+    inTextureLenManHinh(0, 0, 1280, 800, textureNenLon);
+    inTextureLenManHinh(10, 10, 1260, 780, textureNenNho);
+    inTextureLenManHinh(300, 0, 680, 80, tieuDePoke);
+    for (int i = 0; i < 3; i++){
+        for (int j = 0; j < 5; j++){
+            inTextureLenManHinh(80 + 240*j, 120 + 220*i, 160, 160, textureOTrong);
+            if (pokeNguoiChoi[i + 3*j].cohaykhong){
+                inVat(80 + 240*j, 120 + 220*i, 120, 120, pokeNguoiChoi[i + 3*j].tenFileAnh);
+                SDL_Texture* level = dongChu("Level " + std::to_string(pokeNguoiChoi[i + 3*j].cap), 40, arial);
+                inTextureLenManHinh(80 + 240*j, 240 + 220*i, 160, 40, level);
+                SDL_DestroyTexture(level);
+                switch (pokeNguoiChoi[i+j*3].he){
+                case 1:
+                    inTextureLenManHinh(200 + 240*j, 120 + 220*i, 40, 40, iconHeCo);
+                    break;
+                case 2:
+                    inTextureLenManHinh(200 + 240*j, 120 + 220*i, 40, 40, iconHeLua);
+                    break;
+                case 3:
+                    inTextureLenManHinh(200 + 240*j, 120 + 220*i, 40, 40, iconHeNuoc);
+                    break;
+                }
+            }
+        }
+    }
+}
+
 void inBattleNPC(){
-    inTextureLenManHinh(0, 0, 1280, 800, mapDanhNPC);
+    if(chonPoke){
+        inChonPoke();
+        inTextureLenManHinh(1090, 730, 180, 60, textureOTrong);
+        inTextureLenManHinh(1100, 740, 160, 40, luaChon1);
+        inTextureLenManHinh(900, 730, 180, 60, textureOTrong);
+        inTextureLenManHinh(910, 740, 160, 40, vaoTran);
+    }
+    if (!chonPoke){
+        inTextureLenManHinh(0, 0, 1280, 800, mapDanhNPC);
+    }
 }

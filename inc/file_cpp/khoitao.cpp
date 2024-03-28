@@ -42,6 +42,7 @@ int x_bong = 350;
 int y_bong = 350;
 bool bongDenPoke = false;
 bool inPoke = true;
+bool chonPoke  = false;
 int tiLeBat;
 SDL_Texture* mapBatPoke = NULL;
 SDL_Texture* luaChon1 = NULL;
@@ -50,6 +51,8 @@ SDL_Texture* hopLuaChon = NULL;
 SDL_Texture* thanhCong = NULL;
 SDL_Texture* thatBai = NULL;
 SDL_Texture* mapDanhNPC = NULL;
+SDL_Texture* tieuDePoke = NULL;
+SDL_Texture* vaoTran = NULL;
 
 
 
@@ -64,7 +67,7 @@ int keoCo = 0;
 int keoLua = 0;
 int keoNuoc = 0;
 int bongPoke = 50;
-int soPoke = 0;
+int soPoke = 15;
 
 //tui do
 SDL_Surface* nenLon = NULL;
@@ -153,6 +156,9 @@ void khoiTaoGame(){
     nhanVatBattle = inAnhLen("res/Nhanvat/trongbattle.png");
 
     mapDanhNPC = inAnhLen("res/Map/danhnhau2.png");
+
+    tieuDePoke = dongChu("CHON POKE", 80, pixel);
+    vaoTran = dongChu("Quat luon", 40, arial);
     
     //title
     anhTitle = inAnhLen("res/Map/title.jpg");
@@ -205,6 +211,9 @@ void ketThucGame(){
 
     SDL_DestroyTexture(mapBatPoke);
     SDL_DestroyTexture(nhanVatBattle);
+
+    SDL_DestroyTexture(tieuDePoke);
+    SDL_DestroyTexture(vaoTran);
 
     //title
     SDL_DestroyTexture (anhTitle);
